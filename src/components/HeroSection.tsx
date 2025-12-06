@@ -1,9 +1,7 @@
 import { motion } from "framer-motion";
 import { TypeAnimation } from "react-type-animation";
-import { ArrowDown, Download, Mail } from "lucide-react";
+import { ArrowDown, Download } from "lucide-react";
 import { Button } from "./ui/button";
-import Scene3D from "./Scene3D";
-import ParticleBackground from "./ParticleBackground";
 
 const HeroSection = () => {
   return (
@@ -11,10 +9,6 @@ const HeroSection = () => {
       id="home"
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
-      {/* Background Elements */}
-      <ParticleBackground />
-      <Scene3D />
-      
       {/* Gradient Orbs */}
       <div className="blur-orb w-[500px] h-[500px] bg-primary/30 -top-48 -left-48" />
       <div className="blur-orb w-[400px] h-[400px] bg-secondary/30 -bottom-32 -right-32" />
@@ -27,14 +21,19 @@ const HeroSection = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <motion.p
-            className="text-primary font-mono text-lg mb-4"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.2 }}
+          {/* Profile Picture */}
+          <motion.div
+            className="w-32 h-32 md:w-40 md:h-40 mx-auto mb-8 rounded-full overflow-hidden border-4 border-primary/50 glow-cyan"
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+            transition={{ delay: 0.2, type: "spring" }}
           >
-            {"// Hello, World!"}
-          </motion.p>
+            <img
+              src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face"
+              alt="Profile"
+              className="w-full h-full object-cover"
+            />
+          </motion.div>
 
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6">
             <span className="text-foreground">I'm </span>
@@ -76,10 +75,6 @@ const HeroSection = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.8 }}
           >
-            <Button variant="hero" size="xl" className="group">
-              <Mail className="mr-2 group-hover:rotate-12 transition-transform" />
-              Hire Me
-            </Button>
             <Button variant="hero-outline" size="xl" className="group">
               <Download className="mr-2 group-hover:translate-y-1 transition-transform" />
               Download Resume
