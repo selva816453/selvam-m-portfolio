@@ -34,16 +34,7 @@ const Navbar = () => {
           isScrolled ? "glass py-4" : "py-6"
         }`}
       >
-        <div className="container-custom flex items-center justify-between px-4 md:px-8">
-          <motion.a
-            href="#home"
-            className="text-2xl font-bold gradient-text"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            {"<Dev />"}
-          </motion.a>
-
+        <div className="container-custom flex items-center justify-center px-4 md:px-8">
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
             {navItems.map((item, index) => (
@@ -60,18 +51,6 @@ const Navbar = () => {
               </motion.a>
             ))}
           </div>
-
-          {/* CTA Button */}
-          <motion.div
-            className="hidden md:block"
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.5 }}
-          >
-            <Button variant="hero" size="lg">
-              Hire Me
-            </Button>
-          </motion.div>
 
           {/* Mobile Menu Button */}
           <Button
@@ -109,9 +88,6 @@ const Navbar = () => {
                   {item.name}
                 </motion.a>
               ))}
-              <Button variant="hero" size="xl" className="mt-4">
-                Hire Me
-              </Button>
             </div>
           </motion.div>
         )}
