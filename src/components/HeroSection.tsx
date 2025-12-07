@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { TypeAnimation } from "react-type-animation";
-import { ArrowDown, Download } from "lucide-react";
+import { Download, Github, Linkedin, Instagram, Mail, Twitter } from "lucide-react";
 import { Button } from "./ui/button";
 
 const HeroSection = () => {
@@ -75,30 +75,49 @@ const HeroSection = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.8 }}
           >
-            <Button variant="hero-outline" size="xl" className="group">
-              <Download className="mr-2 group-hover:translate-y-1 transition-transform" />
-              Download Resume
+            <Button 
+              variant="hero-outline" 
+              size="xl" 
+              className="group"
+              asChild
+            >
+              <a href="/resume.pdf" download="John_Doe_Resume.pdf">
+                <Download className="mr-2 group-hover:translate-y-1 transition-transform" />
+                Download Resume
+              </a>
             </Button>
           </motion.div>
-        </motion.div>
 
-        {/* Scroll Indicator */}
-        <motion.div
-          className="absolute bottom-10 left-1/2 -translate-x-1/2"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1, y: [0, 10, 0] }}
-          transition={{
-            opacity: { delay: 1.5 },
-            y: { repeat: Infinity, duration: 2, ease: "easeInOut" },
-          }}
-        >
-          <a
-            href="#about"
-            className="flex flex-col items-center gap-2 text-muted-foreground hover:text-primary transition-colors"
+          {/* Social Links */}
+          <motion.div
+            className="flex gap-4 justify-center items-center mt-8"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1 }}
           >
-            <span className="text-sm font-mono">Scroll Down</span>
-            <ArrowDown className="w-5 h-5" />
-          </a>
+            {[
+              { icon: Github, href: "https://github.com/johndoe", label: "GitHub" },
+              { icon: Linkedin, href: "https://linkedin.com/in/johndoe", label: "LinkedIn" },
+              { icon: Instagram, href: "https://instagram.com/johndoe", label: "Instagram" },
+              { icon: Twitter, href: "https://twitter.com/johndoe", label: "Twitter" },
+              { icon: Mail, href: "mailto:john@example.com", label: "Email" },
+            ].map((social, index) => (
+              <motion.a
+                key={social.label}
+                href={social.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={social.label}
+                className="w-12 h-12 glass rounded-full flex items-center justify-center text-muted-foreground hover:text-primary hover:glow-cyan hover:scale-110 transition-all duration-300"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 1.1 + index * 0.1 }}
+                whileHover={{ y: -3 }}
+              >
+                <social.icon className="w-5 h-5" />
+              </motion.a>
+            ))}
+          </motion.div>
         </motion.div>
       </div>
     </section>
