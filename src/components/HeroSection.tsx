@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { TypeAnimation } from "react-type-animation";
-import { Download, Github, Linkedin, Instagram, Mail, Twitter } from "lucide-react";
+import { Download, Github, Linkedin, Instagram, Mail, Phone } from "lucide-react";
 import { Button } from "./ui/button";
 import profilePhoto from "@/assets/selva.jpeg";
 import Scene3D from "./Scene3D";
@@ -98,11 +98,11 @@ const HeroSection = () => {
             transition={{ delay: 1 }}
           >
             {[
-              { icon: Github, href: "https://github.com/johndoe", label: "GitHub" },
-              { icon: Linkedin, href: "https://linkedin.com/in/johndoe", label: "LinkedIn" },
-              { icon: Instagram, href: "https://instagram.com/johndoe", label: "Instagram" },
-              { icon: Twitter, href: "https://twitter.com/johndoe", label: "Twitter" },
-              { icon: Mail, href: "mailto:john@example.com", label: "Email" },
+              { icon: Github, href: "https://github.com/selva816453", label: "GitHub" },
+              { icon: Linkedin, href: "https://www.linkedin.com/in/selvam-m-350562324/", label: "LinkedIn" },
+              { icon: Instagram, href: "https://www.instagram.com/_s_e_l_v_a_27/", label: "Instagram" },
+              { icon: Mail, href: "mailto:selva816453@gmail.com", label: "Email" },
+              { icon: Phone, href: "tel:+919655816453", label: "Phone" },
             ].map((social, index) => (
               <motion.a
                 key={social.label}
