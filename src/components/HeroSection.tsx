@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { TypeAnimation } from "react-type-animation";
 import { Download, Github, Linkedin, Instagram, Mail, Twitter } from "lucide-react";
 import { Button } from "./ui/button";
+import profilePhoto from "@/assets/selva.jpeg";
 
 const HeroSection = () => {
   return (
@@ -29,8 +30,8 @@ const HeroSection = () => {
             transition={{ delay: 0.2, type: "spring" }}
           >
             <img
-              src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face"
-              alt="Profile"
+              src={profilePhoto}
+              alt="Selva"
               className="w-full h-full object-cover"
             />
           </motion.div>
