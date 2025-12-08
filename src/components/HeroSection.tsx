@@ -3,6 +3,7 @@ import { TypeAnimation } from "react-type-animation";
 import { Download, Github, Linkedin, Instagram, Mail, Twitter } from "lucide-react";
 import { Button } from "./ui/button";
 import profilePhoto from "@/assets/selva.jpeg";
+import Scene3D from "./Scene3D";
 
 const HeroSection = () => {
   return (
@@ -10,10 +11,12 @@ const HeroSection = () => {
       id="home"
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
+      {/* 3D Animated Background */}
+      <Scene3D />
+      
       {/* Gradient Orbs */}
-      <div className="blur-orb w-[500px] h-[500px] bg-primary/30 -top-48 -left-48" />
-      <div className="blur-orb w-[400px] h-[400px] bg-secondary/30 -bottom-32 -right-32" />
-      <div className="blur-orb w-[300px] h-[300px] bg-accent/20 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
+      <div className="blur-orb w-[500px] h-[500px] bg-primary/20 -top-48 -left-48" />
+      <div className="blur-orb w-[400px] h-[400px] bg-secondary/20 -bottom-32 -right-32" />
 
       {/* Content */}
       <div className="container-custom relative z-10 text-center px-4">
