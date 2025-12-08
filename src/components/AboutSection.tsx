@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { Code2, Palette, Rocket, Coffee } from "lucide-react";
+import profilePhoto from "@/assets/selva.jpeg";
 
 const stats = [
   { icon: Code2, value: "5+", label: "Years Experience" },
@@ -45,15 +46,11 @@ const AboutSection = () => {
             <div className="relative w-full aspect-square max-w-md mx-auto">
               <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-3xl rotate-6 animate-pulse-glow" />
               <div className="absolute inset-0 glass rounded-3xl overflow-hidden">
-                <div className="w-full h-full bg-gradient-to-br from-primary/10 to-secondary/10 flex items-center justify-center">
-                  <motion.div
-                    className="text-8xl"
-                    animate={{ rotate: [0, 10, -10, 0] }}
-                    transition={{ repeat: Infinity, duration: 4 }}
-                  >
-                    👨‍💻
-                  </motion.div>
-                </div>
+                <img
+                  src={profilePhoto}
+                  alt="Selvam M"
+                  className="w-full h-full object-cover"
+                />
               </div>
             </div>
           </motion.div>
@@ -66,33 +63,16 @@ const AboutSection = () => {
             className="space-y-6"
           >
             <h3 className="text-2xl md:text-3xl font-bold">
-              Passionate <span className="gradient-text">Developer</span> & Creative Problem Solver
+              Passionate <span className="gradient-text">Developer</span> | Creative Problem Solver
             </h3>
             
             <p className="text-muted-foreground leading-relaxed">
-              I'm a full-stack developer with over 5 years of experience building 
-              web applications. My journey started with curiosity about how websites 
-              work, and it has evolved into a passion for creating elegant, 
-              user-centric digital solutions.
+              I'm Selvam M, a Frontend Developer from Tamil Nadu, passionate about building responsive and user-friendly websites. Skilled in HTML, CSS, and JavaScript, I have hands-on experience creating projects like a fashion e-commerce site and my personal portfolio.
             </p>
             
             <p className="text-muted-foreground leading-relaxed">
-              I specialize in React, Node.js, and modern web technologies. 
-              When I'm not coding, you'll find me contributing to open-source 
-              projects, writing technical articles, or exploring new technologies.
+              I enjoy solving problems through clean and efficient code and am passionate about designing intuitive, mobile-first UIs. I'm eager to grow in a tech-driven team and continuously learn new technologies and improve my skills.
             </p>
-
-            <div className="flex flex-wrap gap-3">
-              {["React", "TypeScript", "Node.js", "Python", "AWS", "Docker"].map((tech) => (
-                <motion.span
-                  key={tech}
-                  className="px-4 py-2 glass rounded-full text-sm font-medium text-primary"
-                  whileHover={{ scale: 1.05, boxShadow: "0 0 20px hsl(185 100% 50% / 0.3)" }}
-                >
-                  {tech}
-                </motion.span>
-              ))}
-            </div>
           </motion.div>
         </div>
 

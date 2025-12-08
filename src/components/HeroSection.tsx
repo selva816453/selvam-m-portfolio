@@ -38,7 +38,7 @@ const HeroSection = () => {
 
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6">
             <span className="text-foreground">I'm </span>
-            <span className="gradient-text text-glow">John Doe</span>
+            <span className="gradient-text text-glow">Selvam M</span>
           </h1>
 
           <div className="text-2xl md:text-4xl font-medium text-muted-foreground mb-8 h-16">
@@ -46,11 +46,9 @@ const HeroSection = () => {
               sequence={[
                 "Full Stack Developer",
                 2000,
-                "UI/UX Designer",
-                2000,
-                "Open Source Contributor",
-                2000,
                 "Problem Solver",
+                2000,
+                "Java Developer",
                 2000,
               ]}
               wrapper="span"
@@ -82,7 +80,7 @@ const HeroSection = () => {
               className="group"
               asChild
             >
-              <a href="/resume.pdf" download="John_Doe_Resume.pdf">
+              <a href="/resume.pdf" download="Selvam_M_Resume.pdf">
                 <Download className="mr-2 group-hover:translate-y-1 transition-transform" />
                 Download Resume
               </a>
