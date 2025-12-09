@@ -1,8 +1,46 @@
 import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
-import { Send, User, Mail, MessageSquare, CheckCircle } from "lucide-react";
+import { Send, User, Mail, MessageSquare, Github, Linkedin, Instagram, Phone, MapPin } from "lucide-react";
 import { Button } from "./ui/button";
 import { useToast } from "@/hooks/use-toast";
+
+const socialLinks = [
+  {
+    name: "GitHub",
+    icon: Github,
+    href: "https://github.com/selvam",
+    color: "hover:text-foreground",
+    external: true,
+  },
+  {
+    name: "LinkedIn",
+    icon: Linkedin,
+    href: "https://linkedin.com/in/selvam",
+    color: "hover:text-blue-500",
+    external: true,
+  },
+  {
+    name: "Instagram",
+    icon: Instagram,
+    href: "https://instagram.com/selvam",
+    color: "hover:text-pink-500",
+    external: true,
+  },
+  {
+    name: "Email",
+    icon: Mail,
+    href: "mailto:selvam@example.com",
+    color: "hover:text-primary",
+    external: false,
+  },
+  {
+    name: "Phone",
+    icon: Phone,
+    href: "tel:+919876543210",
+    color: "hover:text-green-500",
+    external: false,
+  },
+];
 
 const ContactSection = () => {
   const ref = useRef(null);
@@ -56,14 +94,111 @@ const ContactSection = () => {
           </p>
         </motion.div>
 
-        <div className="max-w-2xl mx-auto">
+        <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+          {/* Contact Info */}
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="space-y-8"
+          >
+            <div className="glass rounded-3xl p-8">
+              <h3 className="text-2xl font-bold mb-6 gradient-text">Let's Connect</h3>
+              <p className="text-muted-foreground mb-8">
+                Feel free to reach out through any of these platforms. I'm always open to discussing new projects, creative ideas, or opportunities.
+              </p>
+
+              {/* Contact Details */}
+              <div className="space-y-4 mb-8">
+                <motion.div
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={isInView ? { opacity: 1, x: 0 } : {}}
+                  transition={{ delay: 0.3 }}
+                  className="flex items-center gap-4 p-4 bg-muted/30 rounded-xl"
+                >
+                  <div className="p-3 bg-primary/10 rounded-lg">
+                    <Mail className="w-5 h-5 text-primary" />
+                  </div>
+                  <div>
+                    <p className="text-sm text-muted-foreground">Email</p>
+                    <a href="mailto:selvam@example.com" className="text-foreground hover:text-primary transition-colors">
+                      selvam@example.com
+                    </a>
+                  </div>
+                </motion.div>
+
+                <motion.div
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={isInView ? { opacity: 1, x: 0 } : {}}
+                  transition={{ delay: 0.4 }}
+                  className="flex items-center gap-4 p-4 bg-muted/30 rounded-xl"
+                >
+                  <div className="p-3 bg-primary/10 rounded-lg">
+                    <Phone className="w-5 h-5 text-primary" />
+                  </div>
+                  <div>
+                    <p className="text-sm text-muted-foreground">Phone</p>
+                    <a href="tel:+919876543210" className="text-foreground hover:text-primary transition-colors">
+                      +91 98765 43210
+                    </a>
+                  </div>
+                </motion.div>
+
+                <motion.div
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={isInView ? { opacity: 1, x: 0 } : {}}
+                  transition={{ delay: 0.5 }}
+                  className="flex items-center gap-4 p-4 bg-muted/30 rounded-xl"
+                >
+                  <div className="p-3 bg-primary/10 rounded-lg">
+                    <MapPin className="w-5 h-5 text-primary" />
+                  </div>
+                  <div>
+                    <p className="text-sm text-muted-foreground">Location</p>
+                    <p className="text-foreground">Tamil Nadu, India</p>
+                  </div>
+                </motion.div>
+              </div>
+
+              {/* Social Links */}
+              <div>
+                <p className="text-sm text-muted-foreground mb-4">Follow me on</p>
+                <div className="flex gap-4">
+                  {socialLinks.map((social, index) => (
+                    <motion.a
+                      key={social.name}
+                      href={social.href}
+                      target={social.external ? "_blank" : undefined}
+                      rel={social.external ? "noopener noreferrer" : undefined}
+                      initial={{ opacity: 0, scale: 0 }}
+                      animate={isInView ? { opacity: 1, scale: 1 } : {}}
+                      transition={{ delay: 0.6 + index * 0.1 }}
+                      whileHover={{ scale: 1.1, y: -5 }}
+                      whileTap={{ scale: 0.95 }}
+                      className={`p-3 glass rounded-xl text-muted-foreground ${social.color} transition-all duration-300`}
+                      aria-label={social.name}
+                    >
+                      <social.icon className="w-5 h-5" />
+                    </motion.a>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Contact Form */}
           <motion.form
             onSubmit={handleSubmit}
-            initial={{ opacity: 0, y: 30 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            initial={{ opacity: 0, x: 30 }}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="glass rounded-3xl p-8 md:p-12 space-y-6"
+            className="glass rounded-3xl p-8 space-y-6"
           >
+            <h3 className="text-2xl font-bold mb-2 gradient-text">Send a Message</h3>
+            <p className="text-muted-foreground text-sm mb-6">
+              Fill out the form below and I'll get back to you as soon as possible.
+            </p>
+
             {/* Name Input */}
             <motion.div
               initial={{ opacity: 0, x: -20 }}
