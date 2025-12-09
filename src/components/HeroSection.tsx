@@ -98,17 +98,17 @@ const HeroSection = () => {
             transition={{ delay: 1 }}
           >
             {[
-              { icon: Github, href: "https://github.com/selva816453", label: "GitHub" },
-              { icon: Linkedin, href: "https://www.linkedin.com/in/selvam-m-350562324/", label: "LinkedIn" },
-              { icon: Instagram, href: "https://www.instagram.com/_s_e_l_v_a_27/", label: "Instagram" },
-              { icon: Mail, href: "mailto:selva816453@gmail.com", label: "Email" },
-              { icon: Phone, href: "tel:+919655816453", label: "Phone" },
+              { icon: Github, href: "https://github.com/selva816453", label: "GitHub", external: true },
+              { icon: Linkedin, href: "https://www.linkedin.com/in/selvam-m-350562324/", label: "LinkedIn", external: true },
+              { icon: Instagram, href: "https://www.instagram.com/_s_e_l_v_a_27/", label: "Instagram", external: true },
+              { icon: Mail, href: "mailto:selva816453@gmail.com", label: "Email", external: false },
+              { icon: Phone, href: "tel:+919655816453", label: "Phone", external: false },
             ].map((social, index) => (
               <motion.a
                 key={social.label}
                 href={social.href}
-                target="_blank"
-                rel="noopener noreferrer"
+                target={social.external ? "_blank" : undefined}
+                rel={social.external ? "noopener noreferrer" : undefined}
                 aria-label={social.label}
                 className="w-12 h-12 glass rounded-full flex items-center justify-center text-muted-foreground hover:text-primary hover:glow-cyan hover:scale-110 transition-all duration-300"
                 initial={{ opacity: 0, y: 20 }}
