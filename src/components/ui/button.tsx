@@ -16,10 +16,18 @@ const buttonVariants = cva(
         ghost: "hover:bg-muted hover:text-foreground",
         link: "text-primary underline-offset-4 hover:underline",
         // Custom portfolio variants
-        hero: "bg-gradient-to-r from-primary to-accent text-primary-foreground font-semibold hover:shadow-xl hover:shadow-primary/30 hover:scale-105 active:scale-100",
-        "hero-outline": "border-2 border-primary/50 bg-transparent text-foreground hover:bg-primary/10 hover:border-primary hover:shadow-lg hover:shadow-primary/20 hover:scale-105 active:scale-100",
-        glow: "bg-primary text-primary-foreground relative overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/20 before:to-transparent before:translate-x-[-200%] hover:before:translate-x-[200%] before:transition-transform before:duration-700 hover:shadow-xl hover:shadow-primary/40",
+        hero: "bg-gradient-to-r from-primary via-accent to-secondary text-primary-foreground font-semibold hover:shadow-xl hover:shadow-primary/40 hover:scale-105 active:scale-100 bg-[length:200%_100%] hover:bg-right transition-all duration-500",
+        "hero-outline": "border-2 border-primary/50 bg-transparent text-foreground hover:bg-primary/10 hover:border-primary hover:shadow-lg hover:shadow-primary/20 hover:scale-105 active:scale-100 animate-[border-glow_3s_ease-in-out_infinite]",
+        glow: "bg-primary text-primary-foreground relative overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/30 before:to-transparent before:translate-x-[-200%] hover:before:translate-x-[200%] before:transition-transform before:duration-700 hover:shadow-xl hover:shadow-primary/40",
         glass: "bg-card/40 backdrop-blur-xl border border-border/50 text-foreground hover:bg-card/60 hover:border-primary/30",
+        // New unique variants
+        neon: "bg-transparent border-2 border-primary text-primary font-semibold hover:bg-primary/10 hover:text-foreground hover:animate-[neon-flicker_1.5s_ease-in-out]",
+        magnetic: "bg-gradient-to-r from-secondary to-primary text-primary-foreground font-semibold relative overflow-hidden hover:animate-[magnetic-pulse_0.6s_ease-in-out] hover:shadow-2xl hover:shadow-primary/50",
+        cyber: "bg-card border border-primary/50 text-primary font-mono uppercase tracking-widest relative overflow-hidden before:absolute before:top-0 before:left-0 before:w-full before:h-full before:bg-primary/20 before:translate-y-full hover:before:translate-y-0 before:transition-transform before:duration-300 hover:text-foreground hover:border-primary",
+        pulse: "bg-primary text-primary-foreground font-semibold animate-pulse-glow hover:scale-105 hover:animate-none transition-transform",
+        shine: "bg-gradient-to-r from-primary to-secondary text-primary-foreground font-semibold relative overflow-hidden after:absolute after:top-0 after:left-[-100%] after:w-full after:h-full after:bg-gradient-to-r after:from-transparent after:via-white/30 after:to-transparent hover:after:animate-[shine_0.8s_ease-in-out]",
+        gradient: "bg-gradient-to-r from-primary via-secondary to-accent text-primary-foreground font-semibold bg-[length:200%_200%] animate-[gradient-rotate_4s_ease_infinite] hover:shadow-xl hover:shadow-secondary/30 hover:scale-105",
+        morphing: "bg-primary text-primary-foreground font-semibold rounded-xl hover:rounded-3xl transition-all duration-500 hover:bg-secondary hover:shadow-xl hover:shadow-secondary/40 hover:scale-105",
       },
       size: {
         default: "h-10 px-4 py-2",

@@ -45,10 +45,10 @@ const CTASection = () => {
             transition={{ delay: 0.4 }}
             className="flex flex-col sm:flex-row gap-4 justify-center"
           >
-            <Button variant="hero" size="xl">
+            <Button variant="shine" size="xl">
               Start a Project
             </Button>
-            <Button variant="hero-outline" size="xl">
+            <Button variant="neon" size="xl">
               Schedule a Call
             </Button>
           </motion.div>

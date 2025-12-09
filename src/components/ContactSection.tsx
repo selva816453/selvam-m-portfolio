@@ -126,7 +126,7 @@ const ContactSection = () => {
             >
               <Button
                 type="submit"
-                variant="hero"
+                variant="gradient"
                 size="xl"
                 className="w-full"
                 disabled={isSubmitting}
