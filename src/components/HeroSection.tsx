@@ -78,7 +78,7 @@ const HeroSection = () => {
             transition={{ delay: 0.8 }}
           >
             <Button 
-              variant="hero-outline" 
+              variant="cyber" 
               size="xl" 
               className="group"
               asChild

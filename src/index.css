@@ -193,6 +193,62 @@
     50% { box-shadow: 0 0 40px hsl(var(--primary) / 0.6), 0 0 60px hsl(var(--primary) / 0.4); }
   }
 
+  /* Button shine animation */
+  @keyframes shine {
+    0% { left: -100%; }
+    100% { left: 200%; }
+  }
+
+  /* Button border glow animation */
+  @keyframes border-glow {
+    0%, 100% { 
+      border-color: hsl(var(--primary) / 0.5);
+      box-shadow: 0 0 20px hsl(var(--primary) / 0.2);
+    }
+    50% { 
+      border-color: hsl(var(--secondary) / 0.8);
+      box-shadow: 0 0 30px hsl(var(--secondary) / 0.4);
+    }
+  }
+
+  /* Magnetic button effect */
+  @keyframes magnetic-pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+  }
+
+  /* Ripple animation */
+  @keyframes ripple {
+    0% { transform: scale(0); opacity: 0.5; }
+    100% { transform: scale(4); opacity: 0; }
+  }
+
+  /* Neon flicker */
+  @keyframes neon-flicker {
+    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+      text-shadow: 
+        0 0 5px hsl(var(--primary)),
+        0 0 10px hsl(var(--primary)),
+        0 0 20px hsl(var(--primary)),
+        0 0 40px hsl(var(--primary));
+      box-shadow: 
+        0 0 5px hsl(var(--primary) / 0.5),
+        0 0 20px hsl(var(--primary) / 0.3),
+        inset 0 0 10px hsl(var(--primary) / 0.1);
+    }
+    20%, 24%, 55% {
+      text-shadow: none;
+      box-shadow: none;
+    }
+  }
+
+  /* Gradient border rotate */
+  @keyframes gradient-rotate {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
   .animate-pulse-glow {
     animation: pulse-glow 3s ease-in-out infinite;
   }
