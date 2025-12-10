@@ -2,16 +2,25 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 
 const skills = [
-  { name: "React / Next.js", level: 95, category: "Frontend" },
-  { name: "TypeScript", level: 90, category: "Frontend" },
-  { name: "Tailwind CSS", level: 92, category: "Frontend" },
-  { name: "Node.js", level: 85, category: "Backend" },
-  { name: "Python", level: 80, category: "Backend" },
-  { name: "PostgreSQL", level: 82, category: "Backend" },
-  { name: "Docker", level: 78, category: "Tools" },
-  { name: "AWS", level: 75, category: "Tools" },
-  { name: "Git", level: 90, category: "Tools" },
-  { name: "Figma", level: 85, category: "Design" },
+  { name: "HTML", level: 90, category: "Frontend" },
+  { name: "CSS / Tailwind CSS", level: 88, category: "Frontend" },
+  { name: "JavaScript", level: 50, category: "Frontend" },
+  { name: "React", level: 58, category: "Frontend" },
+  { name: "Java", level: 90, category: "Backend" },
+  { name: "MySQL", level: 78, category: "Backend" },
+  { name: "Git & GitHub", level: 88, category: "Tools" },
+  { name: "VS Code / IntelliJ", level: 85, category: "Tools" },
+  { name: "Figma", level: 90, category: "Design" },
+  { name: "Responsive UI Design", level: 85, category: "Design" },
+];
+
+const techIcons = [
+  { emoji: "🔥", label: "Java" },
+  { emoji: "⚛️", label: "React" },
+  { emoji: "🌿", label: "Spring Boot" },
+  { emoji: "🗂️", label: "MySQL" },
+  { emoji: "🎨", label: "Figma" },
+  { emoji: "🛠️", label: "Git / GitHub" },
 ];
 
 const SkillBar = ({ skill, index, isInView }: { skill: typeof skills[0]; index: number; isInView: boolean }) => {
@@ -103,17 +112,23 @@ const SkillsSection = () => {
           transition={{ duration: 0.6, delay: 0.8 }}
           className="mt-16 flex flex-wrap justify-center gap-6"
         >
-          {["⚛️", "📘", "🟢", "🐍", "🐳", "☁️", "🎨", "📊"].map((emoji, index) => (
+          {techIcons.map((tech, index) => (
             <motion.div
-              key={index}
-              className="w-16 h-16 glass rounded-xl flex items-center justify-center text-3xl cursor-pointer"
-              whileHover={{ scale: 1.1, rotate: 10 }}
-              animate={{ y: [0, -5, 0] }}
-              transition={{
-                y: { repeat: Infinity, duration: 2, delay: index * 0.2 },
-              }}
+              key={tech.label}
+              className="flex flex-col items-center gap-2"
+              whileHover={{ scale: 1.1 }}
             >
-              {emoji}
+              <motion.div
+                className="w-16 h-16 glass rounded-xl flex items-center justify-center text-3xl cursor-pointer"
+                whileHover={{ rotate: 10 }}
+                animate={{ y: [0, -5, 0] }}
+                transition={{
+                  y: { repeat: Infinity, duration: 2, delay: index * 0.2 },
+                }}
+              >
+                {tech.emoji}
+              </motion.div>
+              <span className="text-xs text-muted-foreground">{tech.label}</span>
             </motion.div>
           ))}
         </motion.div>
