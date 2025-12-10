@@ -34,8 +34,7 @@ const CTASection = () => {
           </h2>
 
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8">
-            I'm currently available for freelance work and exciting opportunities. 
-            If you have a project that needs some creative magic, let's talk!
+            Have a project in mind? I'd love to help bring your ideas to life with clean code, modern design, and reliable execution.
           </p>
 
           <motion.div

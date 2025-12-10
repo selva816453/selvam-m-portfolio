@@ -90,7 +90,7 @@ const ContactSection = () => {
             Get In <span className="gradient-text">Touch</span>
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Have a project in mind? Let's work together to bring your ideas to life.
+            Have a project in mind? I'd love to help bring your ideas to life with clean code, modern design, and reliable execution.
           </p>
         </motion.div>
 
