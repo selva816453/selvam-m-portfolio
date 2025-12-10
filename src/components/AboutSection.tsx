@@ -66,11 +66,11 @@ const AboutSection = () => {
             </h3>
             
             <p className="text-muted-foreground leading-relaxed">
-              I'm Selvam M, a Frontend Developer from Tamil Nadu, passionate about building responsive and user-friendly websites. Skilled in HTML, CSS, and JavaScript, I have hands-on experience creating projects like a fashion e-commerce site and my personal portfolio.
+              I'm Selvam M, a dedicated Java and Frontend Developer from Tamil Nadu, focused on creating clean, responsive, and user-friendly digital experiences. Skilled in Java, Spring Boot, HTML, CSS, and JavaScript, I've built practical projects including a fashion e-commerce website and my personal portfolio.
             </p>
             
             <p className="text-muted-foreground leading-relaxed">
-              I enjoy solving problems through clean and efficient code and am passionate about designing intuitive, mobile-first UIs. I'm eager to grow in a tech-driven team and continuously learn new technologies and improve my skills.
+              I enjoy transforming ideas into functional products through efficient code, intuitive UI design, and mobile-first development. As a continuous learner, I'm eager to grow within a tech-driven team and contribute to building impactful digital solutions.
             </p>
           </motion.div>
         </div>
