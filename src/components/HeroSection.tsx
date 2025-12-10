@@ -47,11 +47,11 @@ const HeroSection = () => {
           <div className="text-2xl md:text-4xl font-medium text-muted-foreground mb-8 h-16">
             <TypeAnimation
               sequence={[
+                "Java Developer",
+                2000,
                 "Full Stack Developer",
                 2000,
                 "Problem Solver",
-                2000,
-                "Java Developer",
                 2000,
               ]}
               wrapper="span"
@@ -60,16 +60,6 @@ const HeroSection = () => {
               className="gradient-text-cyan"
             />
           </div>
-
-          <motion.p
-            className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-12"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.6 }}
-          >
-            Crafting exceptional digital experiences with modern technologies.
-            Passionate about building products that make a difference.
-          </motion.p>
 
           <motion.div
             className="flex flex-col sm:flex-row gap-4 justify-center items-center"
