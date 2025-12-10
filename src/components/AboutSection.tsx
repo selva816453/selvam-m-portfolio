@@ -1,14 +1,13 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { Code2, Palette, Rocket, Coffee } from "lucide-react";
+import { Code2, Rocket, Target } from "lucide-react";
 import profilePhoto from "@/assets/selva.jpeg";
 
 const stats = [
-  { icon: Code2, value: "5+", label: "Years Experience" },
-  { icon: Rocket, value: "50+", label: "Projects Completed" },
-  { icon: Palette, value: "30+", label: "Happy Clients" },
-  { icon: Coffee, value: "1000+", label: "Cups of Coffee" },
+  { icon: Code2, value: "3+", label: "Years Learning Experience" },
+  { icon: Rocket, value: "5+", label: "Projects Completed" },
+  { icon: Target, value: "300+", label: "Problems Solved" },
 ];
 
 const AboutSection = () => {
@@ -81,7 +80,7 @@ const AboutSection = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.6 }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-20"
+          className="grid grid-cols-3 gap-6 mt-20"
         >
           {stats.map((stat, index) => (
             <motion.div
