@@ -3,7 +3,24 @@ import { useRef } from "react";
 import { ExternalLink, Github, Folder } from "lucide-react";
 import { Button } from "./ui/button";
 
-const projects: { title: string; description: string; tags: string[]; github: string; live: string; featured: boolean }[] = [];
+const projects = [
+  {
+    title: "E-Commerce Glossary Website",
+    description: "A comprehensive fashion e-commerce platform with product catalog, shopping cart, and responsive design for seamless online shopping experience.",
+    tags: ["HTML", "CSS", "JavaScript", "Responsive Design"],
+    github: "#",
+    live: "#",
+    featured: true,
+  },
+  {
+    title: "Attendance Mark System",
+    description: "A web-based attendance management system for tracking and managing student/employee attendance with user-friendly interface.",
+    tags: ["Java", "Spring Boot", "MySQL", "HTML/CSS"],
+    github: "#",
+    live: "#",
+    featured: true,
+  },
+];
 
 const ProjectCard = ({ project, index, isInView }: { 
   project: typeof projects[0]; 
