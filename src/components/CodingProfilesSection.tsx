@@ -5,39 +5,43 @@ import { Trophy, Target, Flame, Star } from "lucide-react";
 const codingProfiles = [
   {
     platform: "LeetCode",
-    username: "@johndoe",
-    stats: { solved: 500, ranking: "Top 5%" },
+    username: "@selvaaaaa",
+    stats: { solved: 258, rank: "509,796" },
     icon: "🏆",
     color: "from-amber-500 to-orange-500",
+    url: "https://leetcode.com/u/selvaaaaa/",
   },
   {
     platform: "GitHub",
-    username: "@johndoe",
-    stats: { repos: 120, contributions: "2.5K" },
+    username: "@selva816453",
+    stats: { repos: 5, role: "Web Developer" },
     icon: "🐙",
     color: "from-gray-600 to-gray-800",
+    url: "https://github.com/selva816453",
   },
   {
-    platform: "Codeforces",
-    username: "@johndoe",
-    stats: { rating: 1850, rank: "Expert" },
-    icon: "⚔️",
-    color: "from-blue-500 to-cyan-500",
+    platform: "GeeksforGeeks",
+    username: "@selva8zxma",
+    stats: { solved: 95, score: 208 },
+    icon: "💚",
+    color: "from-green-500 to-emerald-500",
+    url: "https://www.geeksforgeeks.org/user/selva8zxma/",
   },
   {
     platform: "HackerRank",
-    username: "@johndoe",
-    stats: { badges: 25, stars: "5★" },
+    username: "@selva816453",
+    stats: { certification: "Java", level: "Basic" },
     icon: "💎",
-    color: "from-green-500 to-emerald-500",
+    color: "from-emerald-500 to-teal-500",
+    url: "https://www.hackerrank.com/profile/selva816453",
   },
 ];
 
 const achievements = [
-  { icon: Trophy, label: "500+ Problems Solved", value: "Competitive Coding" },
-  { icon: Target, label: "100% Streak", value: "GitHub Activity" },
-  { icon: Flame, label: "365 Days", value: "Daily Coding" },
-  { icon: Star, label: "50+ Stars", value: "Open Source" },
+  { icon: Trophy, label: "350+ Problems", value: "LeetCode + GFG" },
+  { icon: Target, label: "Java Expert", value: "246 LC Problems" },
+  { icon: Flame, label: "50 Days Badge", value: "LeetCode 2025" },
+  { icon: Star, label: "Certified", value: "Java Basic" },
 ];
 
 const CodingProfilesSection = () => {
@@ -67,13 +71,16 @@ const CodingProfilesSection = () => {
         {/* Profiles Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
           {codingProfiles.map((profile, index) => (
-            <motion.div
+            <motion.a
               key={profile.platform}
+              href={profile.url}
+              target="_blank"
+              rel="noopener noreferrer"
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               whileHover={{ y: -5, scale: 1.02 }}
-              className="group glass rounded-2xl p-6 cursor-pointer hover:glow-gradient transition-all duration-300"
+              className="group glass rounded-2xl p-6 cursor-pointer hover:glow-gradient transition-all duration-300 block"
             >
               <div className="text-4xl mb-4">{profile.icon}</div>
               <h3 className="text-lg font-bold text-foreground mb-1">
@@ -90,7 +97,7 @@ const CodingProfilesSection = () => {
                   </div>
                 ))}
               </div>
-            </motion.div>
+            </motion.a>
           ))}
         </div>
 
