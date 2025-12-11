@@ -3,56 +3,7 @@ import { useRef } from "react";
 import { ExternalLink, Github, Folder } from "lucide-react";
 import { Button } from "./ui/button";
 
-const projects = [
-  {
-    title: "E-Commerce Platform",
-    description: "A full-featured e-commerce solution with real-time inventory, payment processing, and admin dashboard.",
-    tags: ["React", "Node.js", "PostgreSQL", "Stripe"],
-    github: "#",
-    live: "#",
-    featured: true,
-  },
-  {
-    title: "AI Content Generator",
-    description: "AI-powered content generation tool using GPT-4 for marketing copy and blog posts.",
-    tags: ["Next.js", "OpenAI", "Tailwind", "Prisma"],
-    github: "#",
-    live: "#",
-    featured: true,
-  },
-  {
-    title: "Real-time Chat App",
-    description: "Scalable messaging platform with video calls, file sharing, and end-to-end encryption.",
-    tags: ["React", "Socket.io", "WebRTC", "Redis"],
-    github: "#",
-    live: "#",
-    featured: true,
-  },
-  {
-    title: "Task Management Tool",
-    description: "Collaborative project management with kanban boards and team analytics.",
-    tags: ["Vue.js", "Firebase", "Vuetify"],
-    github: "#",
-    live: "#",
-    featured: false,
-  },
-  {
-    title: "Portfolio Generator",
-    description: "CLI tool to generate developer portfolios from a JSON config file.",
-    tags: ["TypeScript", "Node.js", "CLI"],
-    github: "#",
-    live: "#",
-    featured: false,
-  },
-  {
-    title: "Weather Dashboard",
-    description: "Beautiful weather app with forecasts, maps, and location-based alerts.",
-    tags: ["React", "OpenWeather API", "Chart.js"],
-    github: "#",
-    live: "#",
-    featured: false,
-  },
-];
+const projects: { title: string; description: string; tags: string[]; github: string; live: string; featured: boolean }[] = [];
 
 const ProjectCard = ({ project, index, isInView }: { 
   project: typeof projects[0]; 
