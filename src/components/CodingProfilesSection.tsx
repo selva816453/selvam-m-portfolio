@@ -45,7 +45,7 @@ const CodingProfilesSection = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section className="section-padding relative overflow-hidden">
+    <section id="coding" className="section-padding relative overflow-hidden">
       {/* Background */}
       <div className="blur-orb w-[350px] h-[350px] bg-secondary/15 top-1/4 -right-32" />
 
