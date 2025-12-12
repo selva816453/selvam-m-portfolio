@@ -8,35 +8,35 @@ const socialLinks = [
   {
     name: "GitHub",
     icon: Github,
-    href: "https://github.com/selvam",
+    href: "https://github.com/selva816453",
     color: "hover:text-foreground",
     external: true,
   },
   {
     name: "LinkedIn",
     icon: Linkedin,
-    href: "https://linkedin.com/in/selvam",
+    href: "https://www.linkedin.com/in/selvam-m-350562324/",
     color: "hover:text-blue-500",
     external: true,
   },
   {
     name: "Instagram",
     icon: Instagram,
-    href: "https://instagram.com/selvam",
+    href: "https://www.instagram.com/_s_e_l_v_a_27/",
     color: "hover:text-pink-500",
     external: true,
   },
   {
     name: "Email",
     icon: Mail,
-    href: "mailto:selvam@example.com",
+    href: "mailto:selva816453@gmail.com",
     color: "hover:text-primary",
     external: false,
   },
   {
     name: "Phone",
     icon: Phone,
-    href: "tel:+919876543210",
+    href: "tel:+919655816453",
     color: "hover:text-green-500",
     external: false,
   },
@@ -121,8 +121,8 @@ const ContactSection = () => {
                   </div>
                   <div>
                     <p className="text-sm text-muted-foreground">Email</p>
-                    <a href="mailto:selvam@example.com" className="text-foreground hover:text-primary transition-colors">
-                      selvam@example.com
+                    <a href="mailto:selva816453@gmail.com" className="text-foreground hover:text-primary transition-colors">
+                      selva816453@gmail.com
                     </a>
                   </div>
                 </motion.div>
@@ -138,8 +138,8 @@ const ContactSection = () => {
                   </div>
                   <div>
                     <p className="text-sm text-muted-foreground">Phone</p>
-                    <a href="tel:+919876543210" className="text-foreground hover:text-primary transition-colors">
-                      +91 98765 43210
+                    <a href="tel:+919655816453" className="text-foreground hover:text-primary transition-colors">
+                      +91 96558 16453
                     </a>
                   </div>
                 </motion.div>
