@@ -5,18 +5,18 @@ import { Button } from "./ui/button";
 
 const projects = [
   {
-    title: "E-Commerce Glossary Website",
-    description: "A comprehensive fashion e-commerce platform with product catalog, shopping cart, and responsive design for seamless online shopping experience.",
-    tags: ["HTML", "CSS", "JavaScript", "Responsive Design"],
-    github: "https://github.com/selva816453/Glossary-Ecommerce-Website",
-    live: "#",
+    title: "College Lost and Found Management System",
+    description: "A comprehensive web application for managing lost and found items in college campus, helping students and staff report and recover their belongings.",
+    tags: ["React", "TypeScript", "Tailwind CSS", "Supabase"],
+    github: "https://github.com/selva816453/college-lost-and-found-system",
+    live: "https://found-it-buddy.lovable.app",
     featured: true,
   },
   {
-    title: "Attendance Mark System",
-    description: "A web-based attendance management system for tracking and managing student/employee attendance with user-friendly interface.",
-    tags: ["Java", "Spring Boot", "MySQL", "HTML/CSS"],
-    github: "https://github.com/selva816453/Attendance-Mark-System",
+    title: "E-Commerce Grocery Website",
+    description: "A comprehensive grocery e-commerce platform with product catalog, shopping cart, and responsive design for seamless online shopping experience.",
+    tags: ["HTML", "CSS", "JavaScript", "Responsive Design"],
+    github: "https://github.com/selva816453/Grocery-website-clone",
     live: "#",
     featured: true,
   },
