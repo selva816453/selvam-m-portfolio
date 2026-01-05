@@ -1,127 +1,222 @@
 import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
-import { Trophy, Target, Flame, Star } from "lucide-react";
+import { useRef, useState } from "react";
+import { Trophy, Target, Flame, Star, ExternalLink, Code2, Sparkles } from "lucide-react";
 
 const codingProfiles = [
   {
     platform: "LeetCode",
     username: "@selvaaaaa",
-    stats: { solved: 258, rank: "509,796" },
+    solved: "258+",
+    rank: "509,796",
     icon: "🏆",
-    color: "from-amber-500 to-orange-500",
+    bgColor: "bg-gradient-to-br from-amber-500/20 to-orange-600/20",
+    borderColor: "border-amber-500/30",
+    accentColor: "text-amber-400",
     url: "https://leetcode.com/u/selvaaaaa/",
   },
   {
     platform: "GitHub",
     username: "@selva816453",
-    stats: { repos: 5, role: "Web Developer" },
+    solved: "5+",
+    rank: "Web Dev",
     icon: "🐙",
-    color: "from-gray-600 to-gray-800",
+    bgColor: "bg-gradient-to-br from-gray-500/20 to-slate-600/20",
+    borderColor: "border-gray-500/30",
+    accentColor: "text-gray-300",
     url: "https://github.com/selva816453",
   },
   {
     platform: "GeeksforGeeks",
     username: "@selva8zxma",
-    stats: { solved: 95, score: 208 },
+    solved: "95+",
+    rank: "Score: 208",
     icon: "💚",
-    color: "from-green-500 to-emerald-500",
+    bgColor: "bg-gradient-to-br from-green-500/20 to-emerald-600/20",
+    borderColor: "border-green-500/30",
+    accentColor: "text-green-400",
     url: "https://www.geeksforgeeks.org/user/selva8zxma/",
   },
   {
     platform: "HackerRank",
     username: "@selva816453",
-    stats: { certification: "Java", level: "Basic" },
+    solved: "Java",
+    rank: "Certified",
     icon: "💎",
-    color: "from-emerald-500 to-teal-500",
+    bgColor: "bg-gradient-to-br from-emerald-500/20 to-teal-600/20",
+    borderColor: "border-emerald-500/30",
+    accentColor: "text-emerald-400",
     url: "https://www.hackerrank.com/profile/selva816453",
   },
 ];
 
-const achievements = [
-  { icon: Trophy, label: "350+ Problems", value: "LeetCode + GFG" },
-  { icon: Target, label: "Java Expert", value: "246 LC Problems" },
-  { icon: Flame, label: "50 Days Badge", value: "LeetCode 2025" },
-  { icon: Star, label: "Certified", value: "Java Basic" },
+const stats = [
+  { icon: Trophy, value: "350+", label: "Problems Solved", color: "text-amber-400" },
+  { icon: Target, value: "246", label: "LeetCode Java", color: "text-blue-400" },
+  { icon: Flame, value: "50", label: "Days Badge", color: "text-orange-400" },
+  { icon: Star, value: "4", label: "Platforms", color: "text-purple-400" },
 ];
 
 const CodingProfilesSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   return (
     <section id="coding" className="section-padding relative overflow-hidden">
-      {/* Background */}
-      <div className="blur-orb w-[350px] h-[350px] bg-secondary/15 top-1/4 -right-32" />
+      {/* Background Effects */}
+      <div className="absolute inset-0 bg-gradient-to-b from-background via-background/95 to-background" />
+      <motion.div 
+        className="blur-orb w-[400px] h-[400px] bg-primary/10 top-1/4 -right-32"
+        animate={{ scale: [1, 1.2, 1], opacity: [0.1, 0.15, 0.1] }}
+        transition={{ duration: 8, repeat: Infinity }}
+      />
+      <motion.div 
+        className="blur-orb w-[300px] h-[300px] bg-secondary/10 bottom-0 left-0"
+        animate={{ scale: [1, 1.3, 1] }}
+        transition={{ duration: 10, repeat: Infinity, delay: 2 }}
+      />
 
       <div className="container-custom relative z-10" ref={ref}>
+        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+          <motion.div
+            initial={{ scale: 0 }}
+            animate={isInView ? { scale: 1 } : {}}
+            transition={{ delay: 0.2, type: "spring" }}
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6"
+          >
+            <Code2 className="w-4 h-4 text-primary" />
+            <span className="text-sm font-medium text-primary">Competitive Coding</span>
+          </motion.div>
+          
+          <h2 className="text-4xl md:text-6xl font-bold mb-6">
             Coding <span className="gradient-text">Profiles</span>
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
-            My presence across competitive programming and development platforms
+          <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
+            My journey across competitive programming platforms
           </p>
         </motion.div>
 
-        {/* Profiles Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+        {/* Stats Row */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12"
+        >
+          {stats.map((stat, index) => (
+            <motion.div
+              key={stat.label}
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={isInView ? { opacity: 1, scale: 1 } : {}}
+              transition={{ delay: 0.3 + index * 0.1, type: "spring" }}
+              whileHover={{ scale: 1.05, y: -5 }}
+              className="glass rounded-2xl p-5 text-center border border-white/10 hover:border-primary/30 transition-all"
+            >
+              <stat.icon className={`w-8 h-8 mx-auto mb-3 ${stat.color}`} />
+              <p className={`text-3xl font-bold ${stat.color}`}>{stat.value}</p>
+              <p className="text-sm text-muted-foreground mt-1">{stat.label}</p>
+            </motion.div>
+          ))}
+        </motion.div>
+
+        {/* Profiles Grid - New Modern Layout */}
+        <div className="grid md:grid-cols-2 gap-5">
           {codingProfiles.map((profile, index) => (
             <motion.a
               key={profile.platform}
               href={profile.url}
               target="_blank"
               rel="noopener noreferrer"
-              initial={{ opacity: 0, y: 30 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              whileHover={{ y: -5, scale: 1.02 }}
-              className="group glass rounded-2xl p-6 cursor-pointer hover:glow-gradient transition-all duration-300 block"
+              initial={{ opacity: 0, x: index % 2 === 0 ? -30 : 30 }}
+              animate={isInView ? { opacity: 1, x: 0 } : {}}
+              transition={{ duration: 0.5, delay: 0.4 + index * 0.1 }}
+              onMouseEnter={() => setHoveredIndex(index)}
+              onMouseLeave={() => setHoveredIndex(null)}
+              className={`group relative flex items-center gap-5 p-6 rounded-2xl border ${profile.borderColor} ${profile.bgColor} backdrop-blur-xl overflow-hidden transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl`}
             >
-              <div className="text-4xl mb-4">{profile.icon}</div>
-              <h3 className="text-lg font-bold text-foreground mb-1">
-                {profile.platform}
-              </h3>
-              <p className="text-sm text-muted-foreground mb-4">
-                {profile.username}
-              </p>
-              <div className="space-y-2">
-                {Object.entries(profile.stats).map(([key, value]) => (
-                  <div key={key} className="flex justify-between text-sm">
-                    <span className="text-muted-foreground capitalize">{key}</span>
-                    <span className="font-mono text-primary">{value}</span>
-                  </div>
-                ))}
+              {/* Animated background glow */}
+              <motion.div
+                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                style={{
+                  background: `radial-gradient(circle at ${hoveredIndex === index ? '50%' : '0%'} 50%, hsl(var(--primary) / 0.15), transparent 70%)`
+                }}
+              />
+
+              {/* Icon */}
+              <motion.div
+                className="relative flex-shrink-0 w-16 h-16 rounded-2xl bg-background/50 backdrop-blur-sm flex items-center justify-center text-4xl border border-white/10"
+                whileHover={{ rotate: [0, -10, 10, 0], scale: 1.1 }}
+                transition={{ duration: 0.5 }}
+              >
+                {profile.icon}
+              </motion.div>
+
+              {/* Content */}
+              <div className="flex-1 relative z-10">
+                <div className="flex items-center gap-2 mb-1">
+                  <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors">
+                    {profile.platform}
+                  </h3>
+                  <motion.span
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={hoveredIndex === index ? { opacity: 1, x: 0 } : { opacity: 0, x: -10 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <ExternalLink className="w-4 h-4 text-primary" />
+                  </motion.span>
+                </div>
+                <p className="text-sm text-muted-foreground mb-3">{profile.username}</p>
+                
+                {/* Stats badges */}
+                <div className="flex gap-3">
+                  <span className={`px-3 py-1 rounded-full text-sm font-bold ${profile.bgColor} border ${profile.borderColor} ${profile.accentColor}`}>
+                    {profile.solved}
+                  </span>
+                  <span className="px-3 py-1 rounded-full text-sm bg-white/5 border border-white/10 text-muted-foreground">
+                    {profile.rank}
+                  </span>
+                </div>
               </div>
+
+              {/* Arrow indicator */}
+              <motion.div
+                className="flex-shrink-0"
+                animate={hoveredIndex === index ? { x: 5 } : { x: 0 }}
+              >
+                <div className={`w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center ${profile.accentColor} group-hover:bg-primary/20 group-hover:border-primary/30 transition-all`}>
+                  <ExternalLink className="w-4 h-4" />
+                </div>
+              </motion.div>
+
+              {/* Bottom highlight line */}
+              <motion.div
+                className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-primary to-transparent"
+                initial={{ scaleX: 0 }}
+                animate={hoveredIndex === index ? { scaleX: 1 } : { scaleX: 0 }}
+                transition={{ duration: 0.3 }}
+              />
             </motion.a>
           ))}
         </div>
 
-        {/* Achievements Row */}
+        {/* Bottom CTA */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.5 }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-4"
+          transition={{ delay: 0.8 }}
+          className="text-center mt-12"
         >
-          {achievements.map((achievement, index) => (
-            <motion.div
-              key={achievement.label}
-              className="glass rounded-xl p-4 text-center"
-              whileHover={{ scale: 1.05 }}
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={isInView ? { opacity: 1, scale: 1 } : {}}
-              transition={{ delay: 0.7 + index * 0.1 }}
-            >
-              <achievement.icon className="w-6 h-6 mx-auto mb-2 text-primary" />
-              <p className="font-bold text-foreground text-sm">{achievement.label}</p>
-              <p className="text-xs text-muted-foreground">{achievement.value}</p>
-            </motion.div>
-          ))}
+          <div className="inline-flex items-center gap-2 text-muted-foreground">
+            <Sparkles className="w-4 h-4 text-primary" />
+            <span className="text-sm">Always learning, always growing</span>
+            <Sparkles className="w-4 h-4 text-primary" />
+          </div>
         </motion.div>
       </div>
     </section>
