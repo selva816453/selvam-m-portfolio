@@ -46,6 +46,8 @@ const ProjectCard = ({ project, index, isInView }: {
           <div className="flex gap-3">
             <motion.a
               href={project.github}
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-muted-foreground hover:text-primary transition-colors"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
@@ -54,6 +56,8 @@ const ProjectCard = ({ project, index, isInView }: {
             </motion.a>
             <motion.a
               href={project.live}
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-muted-foreground hover:text-primary transition-colors"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
