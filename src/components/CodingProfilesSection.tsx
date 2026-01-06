@@ -63,17 +63,37 @@ const CodingProfilesSection = () => {
 
   return (
     <section id="coding" className="section-padding relative overflow-hidden">
-      {/* Background Effects */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-background/95 to-background" />
+      {/* Dark Glassmorphism Background */}
+      <div className="absolute inset-0 bg-background/80 backdrop-blur-3xl" />
+      
+      {/* Frosted glass overlay with noise texture */}
+      <div className="absolute inset-0 bg-gradient-to-br from-white/[0.02] via-transparent to-white/[0.02]" />
+      
+      {/* Subtle grid pattern */}
+      <div 
+        className="absolute inset-0 opacity-[0.03]"
+        style={{
+          backgroundImage: `linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
+                           linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)`,
+          backgroundSize: '50px 50px'
+        }}
+      />
+      
+      {/* Soft ambient glow orbs */}
       <motion.div 
-        className="blur-orb w-[400px] h-[400px] bg-primary/10 top-1/4 -right-32"
-        animate={{ scale: [1, 1.2, 1], opacity: [0.1, 0.15, 0.1] }}
-        transition={{ duration: 8, repeat: Infinity }}
+        className="absolute w-[600px] h-[600px] rounded-full top-1/4 -right-48 bg-primary/5 blur-[120px]"
+        animate={{ opacity: [0.3, 0.5, 0.3] }}
+        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
       />
       <motion.div 
-        className="blur-orb w-[300px] h-[300px] bg-secondary/10 bottom-0 left-0"
-        animate={{ scale: [1, 1.3, 1] }}
-        transition={{ duration: 10, repeat: Infinity, delay: 2 }}
+        className="absolute w-[500px] h-[500px] rounded-full -bottom-32 -left-32 bg-secondary/5 blur-[100px]"
+        animate={{ opacity: [0.2, 0.4, 0.2] }}
+        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+      />
+      <motion.div 
+        className="absolute w-[300px] h-[300px] rounded-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-accent/5 blur-[80px]"
+        animate={{ opacity: [0.1, 0.3, 0.1] }}
+        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 4 }}
       />
 
       <div className="container-custom relative z-10" ref={ref}>
