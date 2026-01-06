@@ -10,23 +10,53 @@ import ParticleBackground from "@/components/ParticleBackground";
 
 const Index = () => {
   return (
-    <main className="min-h-screen bg-background overflow-x-hidden relative">
-      {/* Deep Space Background */}
-      <div className="fixed inset-0 -z-20 bg-gradient-to-b from-[#0a0a1a] via-[#0f0f2a] to-[#050510]" />
+    <main className="min-h-screen bg-[#030308] overflow-x-hidden relative">
+      {/* Pure Dark Background */}
+      <div className="fixed inset-0 -z-20 bg-[#030308]" />
       
-      {/* Nebula Effects */}
+      {/* Subtle Gradient Overlay */}
+      <div className="fixed inset-0 -z-19 bg-gradient-to-br from-[#0a0a15]/50 via-transparent to-[#05050a]/50" />
+      
+      {/* Animated Glow Effects */}
       <div className="fixed inset-0 -z-15 pointer-events-none overflow-hidden">
-        {/* Purple nebula */}
-        <div className="absolute top-0 left-1/4 w-[800px] h-[800px] bg-purple-600/10 rounded-full blur-[150px] animate-pulse-glow" />
-        {/* Blue nebula */}
-        <div className="absolute bottom-1/4 right-0 w-[600px] h-[600px] bg-blue-500/10 rounded-full blur-[120px] animate-float" />
-        {/* Cyan nebula */}
-        <div className="absolute top-1/2 left-0 w-[500px] h-[500px] bg-cyan-400/8 rounded-full blur-[100px] animate-float-delayed" />
-        {/* Pink nebula */}
-        <div className="absolute bottom-0 left-1/3 w-[700px] h-[400px] bg-pink-500/5 rounded-full blur-[130px] animate-float-slow" />
-        {/* Golden accent */}
-        <div className="absolute top-1/3 right-1/4 w-[300px] h-[300px] bg-amber-400/5 rounded-full blur-[80px] animate-pulse-glow" />
+        {/* Primary cyan glow - top right */}
+        <div 
+          className="absolute -top-32 -right-32 w-[500px] h-[500px] rounded-full opacity-20"
+          style={{
+            background: 'radial-gradient(circle, hsl(var(--primary)) 0%, transparent 70%)',
+            animation: 'pulse-glow 8s ease-in-out infinite'
+          }}
+        />
+        {/* Secondary violet glow - bottom left */}
+        <div 
+          className="absolute -bottom-48 -left-48 w-[600px] h-[600px] rounded-full opacity-15"
+          style={{
+            background: 'radial-gradient(circle, hsl(var(--secondary)) 0%, transparent 70%)',
+            animation: 'pulse-glow 10s ease-in-out infinite 2s'
+          }}
+        />
+        {/* Accent glow - center */}
+        <div 
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full opacity-5"
+          style={{
+            background: 'radial-gradient(circle, hsl(var(--accent)) 0%, transparent 60%)',
+            animation: 'pulse-glow 12s ease-in-out infinite 4s'
+          }}
+        />
       </div>
+      
+      {/* Animated grid pattern */}
+      <div 
+        className="fixed inset-0 -z-10 opacity-[0.02]"
+        style={{
+          backgroundImage: `
+            linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)
+          `,
+          backgroundSize: '60px 60px',
+          animation: 'gradient-shift 20s linear infinite'
+        }}
+      />
       
       {/* Star field particles */}
       <ParticleBackground />
