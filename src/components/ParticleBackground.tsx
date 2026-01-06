@@ -36,7 +36,7 @@ const ParticleBackground = () => {
           events: {
             onHover: {
               enable: true,
-              mode: "repulse",
+              mode: "grab",
             },
             onClick: {
               enable: true,
@@ -44,54 +44,65 @@ const ParticleBackground = () => {
             },
           },
           modes: {
-            repulse: {
-              distance: 100,
-              duration: 0.4,
+            grab: {
+              distance: 150,
+              links: {
+                opacity: 0.3,
+              },
             },
             push: {
-              quantity: 2,
+              quantity: 3,
             },
           },
         },
         particles: {
           color: {
-            value: ["#00d4ff", "#7c3aed", "#3b82f6"],
+            value: ["#ffffff", "#00d4ff", "#7c3aed", "#3b82f6", "#fbbf24"],
           },
           links: {
-            color: "#00d4ff",
-            distance: 150,
-            enable: true,
-            opacity: 0.15,
-            width: 1,
+            enable: false,
           },
           move: {
             direction: "none",
             enable: true,
             outModes: {
-              default: "bounce",
+              default: "out",
             },
             random: true,
-            speed: 1,
+            speed: 0.3,
             straight: false,
           },
           number: {
             density: {
               enable: true,
             },
-            value: 60,
+            value: 150,
           },
           opacity: {
-            value: { min: 0.1, max: 0.5 },
+            value: { min: 0.1, max: 1 },
             animation: {
               enable: true,
-              speed: 1,
+              speed: 0.5,
+              sync: false,
             },
           },
           shape: {
             type: "circle",
           },
           size: {
-            value: { min: 1, max: 3 },
+            value: { min: 0.5, max: 3 },
+            animation: {
+              enable: true,
+              speed: 1,
+              sync: false,
+            },
+          },
+          twinkle: {
+            particles: {
+              enable: true,
+              frequency: 0.05,
+              opacity: 1,
+            },
           },
         },
         detectRetina: true,
