@@ -6,8 +6,8 @@ const codingProfiles = [
   {
     platform: "LeetCode",
     username: "@selvaaaaa",
-    solved: "258+",
-    rank: "509,796",
+    solved: "313+",
+    rank: "Rank 398,312",
     icon: "🏆",
     bgColor: "bg-gradient-to-br from-amber-500/20 to-orange-600/20",
     borderColor: "border-amber-500/30",
@@ -17,7 +17,7 @@ const codingProfiles = [
   {
     platform: "GitHub",
     username: "@selva816453",
-    solved: "5+",
+    solved: "5+ Repos",
     rank: "Web Dev",
     icon: "🐙",
     bgColor: "bg-gradient-to-br from-gray-500/20 to-slate-600/20",
@@ -28,8 +28,8 @@ const codingProfiles = [
   {
     platform: "GeeksforGeeks",
     username: "@selva8zxma",
-    solved: "95+",
-    rank: "Score: 208",
+    solved: "135+",
+    rank: "Score: 316",
     icon: "💚",
     bgColor: "bg-gradient-to-br from-green-500/20 to-emerald-600/20",
     borderColor: "border-green-500/30",
@@ -50,9 +50,9 @@ const codingProfiles = [
 ];
 
 const stats = [
-  { icon: Trophy, value: "350+", label: "Problems Solved", color: "text-amber-400" },
-  { icon: Target, value: "246", label: "LeetCode Java", color: "text-blue-400" },
-  { icon: Flame, value: "50", label: "Days Badge", color: "text-orange-400" },
+  { icon: Trophy, value: "450+", label: "Problems Solved", color: "text-amber-400" },
+  { icon: Target, value: "299", label: "LeetCode Java", color: "text-blue-400" },
+  { icon: Flame, value: "100", label: "Days Badge", color: "text-orange-400" },
   { icon: Star, value: "4", label: "Platforms", color: "text-purple-400" },
 ];
 
