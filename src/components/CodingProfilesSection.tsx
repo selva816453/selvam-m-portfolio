@@ -1,65 +1,81 @@
 import { motion, useInView } from "framer-motion";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { Trophy, Target, Flame, Star, ExternalLink, Code2, Sparkles } from "lucide-react";
-
-const codingProfiles = [
-  {
-    platform: "LeetCode",
-    username: "@selvaaaaa",
-    solved: "313+",
-    rank: "Rank 398,312",
-    icon: "🏆",
-    bgColor: "bg-gradient-to-br from-amber-500/20 to-orange-600/20",
-    borderColor: "border-amber-500/30",
-    accentColor: "text-amber-400",
-    url: "https://leetcode.com/u/selvaaaaa/",
-  },
-  {
-    platform: "GitHub",
-    username: "@selva816453",
-    solved: "5+ Repos",
-    rank: "Web Dev",
-    icon: "🐙",
-    bgColor: "bg-gradient-to-br from-gray-500/20 to-slate-600/20",
-    borderColor: "border-gray-500/30",
-    accentColor: "text-gray-300",
-    url: "https://github.com/selva816453",
-  },
-  {
-    platform: "GeeksforGeeks",
-    username: "@selva8zxma",
-    solved: "135+",
-    rank: "Score: 316",
-    icon: "💚",
-    bgColor: "bg-gradient-to-br from-green-500/20 to-emerald-600/20",
-    borderColor: "border-green-500/30",
-    accentColor: "text-green-400",
-    url: "https://www.geeksforgeeks.org/user/selva8zxma/",
-  },
-  {
-    platform: "HackerRank",
-    username: "@selva816453",
-    solved: "Java",
-    rank: "Certified",
-    icon: "💎",
-    bgColor: "bg-gradient-to-br from-emerald-500/20 to-teal-600/20",
-    borderColor: "border-emerald-500/30",
-    accentColor: "text-emerald-400",
-    url: "https://www.hackerrank.com/profile/selva816453",
-  },
-];
-
-const stats = [
-  { icon: Trophy, value: "450+", label: "Problems Solved", color: "text-amber-400" },
-  { icon: Target, value: "299", label: "LeetCode Java", color: "text-blue-400" },
-  { icon: Flame, value: "100", label: "Days Badge", color: "text-orange-400" },
-  { icon: Star, value: "4", label: "Platforms", color: "text-purple-400" },
-];
 
 const CodingProfilesSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+
+  const [leetcode, setLeetcode] = useState<{ solved: number | null; ranking: number | null }>({ solved: null, ranking: null });
+  const [githubRepos, setGithubRepos] = useState<number | null>(null);
+
+  useEffect(() => {
+    fetch("https://leetcode-api-faisalshohag.vercel.app/selvaaaaa")
+      .then((r) => r.json())
+      .then((d) => setLeetcode({ solved: d.solvedProblem ?? null, ranking: d.ranking ?? null }))
+      .catch(() => {});
+
+    fetch("https://api.github.com/users/selva816453")
+      .then((r) => r.json())
+      .then((d) => setGithubRepos(d.public_repos ?? null))
+      .catch(() => {});
+  }, []);
+
+  const codingProfiles = [
+    {
+      platform: "LeetCode",
+      username: "@selvaaaaa",
+      solved: leetcode.solved !== null ? `${leetcode.solved}+` : "Loading...",
+      rank: leetcode.ranking !== null ? `Rank ${leetcode.ranking.toLocaleString()}` : "Live Rank",
+      icon: "🏆",
+      bgColor: "bg-gradient-to-br from-amber-500/20 to-orange-600/20",
+      borderColor: "border-amber-500/30",
+      accentColor: "text-amber-400",
+      url: "https://leetcode.com/u/selvaaaaa/",
+    },
+    {
+      platform: "GitHub",
+      username: "@selva816453",
+      solved: githubRepos !== null ? `${githubRepos} Repos` : "Loading...",
+      rank: "Web Dev",
+      icon: "🐙",
+      bgColor: "bg-gradient-to-br from-gray-500/20 to-slate-600/20",
+      borderColor: "border-gray-500/30",
+      accentColor: "text-gray-300",
+      url: "https://github.com/selva816453",
+    },
+    {
+      platform: "GeeksforGeeks",
+      username: "@selva8zxma",
+      solved: "135+",
+      rank: "Score: 316",
+      icon: "💚",
+      bgColor: "bg-gradient-to-br from-green-500/20 to-emerald-600/20",
+      borderColor: "border-green-500/30",
+      accentColor: "text-green-400",
+      url: "https://www.geeksforgeeks.org/user/selva8zxma/",
+    },
+    {
+      platform: "HackerRank",
+      username: "@selva816453",
+      solved: "Java",
+      rank: "Certified",
+      icon: "💎",
+      bgColor: "bg-gradient-to-br from-emerald-500/20 to-teal-600/20",
+      borderColor: "border-emerald-500/30",
+      accentColor: "text-emerald-400",
+      url: "https://www.hackerrank.com/profile/selva816453",
+    },
+  ];
+
+  const totalSolved = (leetcode.solved ?? 0) + 135;
+  const stats = [
+    { icon: Trophy, value: leetcode.solved !== null ? `${totalSolved}+` : "...", label: "Problems Solved", color: "text-amber-400" },
+    { icon: Target, value: leetcode.solved !== null ? `${leetcode.solved}` : "...", label: "LeetCode Solved", color: "text-blue-400" },
+    { icon: Flame, value: githubRepos !== null ? `${githubRepos}` : "...", label: "GitHub Repos", color: "text-orange-400" },
+    { icon: Star, value: "4", label: "Platforms", color: "text-purple-400" },
+  ];
 
   return (
     <section id="coding" className="section-padding relative overflow-hidden">
