@@ -62,15 +62,19 @@ const AboutSection = () => {
             className="space-y-6"
           >
             <h3 className="text-2xl md:text-3xl font-bold">
-              Passionate <span className="gradient-text">Developer</span> | Creative Problem Solver
+              Java & <span className="gradient-text">Frontend Developer</span> | Clean Architecture, Scalable Systems, Better User Experience
             </h3>
             
             <p className="text-muted-foreground leading-relaxed">
-              I'm Selvam M, a dedicated Java and Frontend Developer from Tamil Nadu, focused on creating clean, responsive, and user-friendly digital experiences. Skilled in Java, Spring Boot, HTML, CSS, and JavaScript, I've built practical projects including a fashion e-commerce website and my personal portfolio.
+              I'm Selvam M, a developer specializing in Java and modern frontend technologies. I build responsive, efficient web applications using Spring Boot, HTML, CSS, and JavaScript, with a focus on clean architecture and maintainable code.
             </p>
             
             <p className="text-muted-foreground leading-relaxed">
-              I enjoy transforming ideas into functional products through efficient code, intuitive UI design, and mobile-first development. As a continuous learner, I'm eager to grow within a tech-driven team and contribute to building impactful digital solutions.
+              I have developed real-world projects, including a fashion e-commerce platform and a personal portfolio, applying mobile-first design and intuitive user interfaces.
+            </p>
+            
+            <p className="text-muted-foreground leading-relaxed">
+              I continuously strengthen my skills in software development and problem-solving, with a focus on delivering reliable and scalable solutions. I am seeking a Software Engineer role where I can contribute to building impactful digital products.
             </p>
           </motion.div>
         </div>
