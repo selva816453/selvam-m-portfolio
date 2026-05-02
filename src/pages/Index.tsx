@@ -66,7 +66,7 @@ const Index = () => {
       <AboutSection />
       <SkillsSection />
       <ProjectsSection />
-      <CodingProfilesSection />
+      <LeetCodeSection />
       <ContactSection />
       <Footer />
     </main>
