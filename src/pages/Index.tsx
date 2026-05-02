@@ -3,7 +3,7 @@ import HeroSection from "@/components/HeroSection";
 import AboutSection from "@/components/AboutSection";
 import SkillsSection from "@/components/SkillsSection";
 import ProjectsSection from "@/components/ProjectsSection";
-import CodingProfilesSection from "@/components/CodingProfilesSection";
+import LeetCodeSection from "@/components/LeetCodeSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 import ParticleBackground from "@/components/ParticleBackground";
@@ -66,7 +66,7 @@ const Index = () => {
       <AboutSection />
       <SkillsSection />
       <ProjectsSection />
-      <CodingProfilesSection />
+      <LeetCodeSection />
       <ContactSection />
       <Footer />
     </main>
