@@ -1,13 +1,12 @@
-import { motion } from "framer-motion";
-import { useInView } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { Code2, Rocket, Target } from "lucide-react";
+import { Download } from "lucide-react";
 import profilePhoto from "@/assets/selva.jpeg";
 
 const stats = [
-  { icon: Code2, value: "3+", label: "Years Learning Experience" },
-  { icon: Rocket, value: "5+", label: "Projects Completed" },
-  { icon: Target, value: "300+", label: "Problems Solved" },
+  { value: "8.4+", label: "Aggregate\nCGPA" },
+  { value: "03+", label: "Projects" },
+  { value: "350+", label: "Problems Solved in\nLeetCode" },
 ];
 
 const AboutSection = () => {
@@ -16,93 +15,85 @@ const AboutSection = () => {
 
   return (
     <section id="about" className="section-padding relative overflow-hidden">
-      {/* Background */}
-      <div className="blur-orb w-[400px] h-[400px] bg-secondary/20 -top-32 -right-32" />
-      
-      <div className="container-custom relative z-10" ref={ref}>
+      <div className="blur-orb w-[400px] h-[400px] bg-secondary/10 -top-32 -right-32" />
+
+      <div className="container-custom relative z-10 px-6 lg:px-16" ref={ref}>
+        {/* Heading */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            About <span className="gradient-text">Me</span>
+          <h2 className="text-4xl md:text-5xl font-bold mb-3 text-foreground">
+            About Me
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
-            Get to know the person behind the code
-          </p>
+          <p className="text-muted-foreground">Software Developer</p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Image/Visual */}
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          {/* Blob portrait */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="relative"
+            className="relative w-full max-w-[420px] aspect-[200/187] mx-auto lg:mx-0 lg:justify-self-end"
           >
-            <div className="relative w-full aspect-square max-w-md mx-auto">
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-3xl rotate-6 animate-pulse-glow" />
-              <div className="absolute inset-0 glass rounded-3xl overflow-hidden">
-                <img
-                  src={profilePhoto}
-                  alt="Selvam M"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-            </div>
+            <svg viewBox="0 0 200 187" xmlns="http://www.w3.org/2000/svg" className="absolute inset-0 w-full h-full">
+              <mask id="aboutBlobMask" mask-type="alpha">
+                <path d="M190.312 36.4879C206.582 62.1187 201.309 102.826 182.328 134.186C163.346 165.547 130.807 187.559 100.226 186.353C69.6454 185.297 41.0228 161.023 21.7403 129.362C2.45775 97.8511 -7.48481 59.1033 6.67581 34.5279C20.9871 10.1032 59.7028 -0.149132 97.9666 0.00163737C136.23 0.303176 174.193 10.857 190.312 36.4879Z" />
+              </mask>
+              <g mask="url(#aboutBlobMask)">
+                <path d="M190.312 36.4879C206.582 62.1187 201.309 102.826 182.328 134.186C163.346 165.547 130.807 187.559 100.226 186.353C69.6454 185.297 41.0228 161.023 21.7403 129.362C2.45775 97.8511 -7.48481 59.1033 6.67581 34.5279C20.9871 10.1032 59.7028 -0.149132 97.9666 0.00163737C136.23 0.303176 174.193 10.857 190.312 36.4879Z" fill="hsl(var(--secondary))" />
+                <image href={profilePhoto} width="200" height="187" preserveAspectRatio="xMidYMid slice" />
+              </g>
+            </svg>
           </motion.div>
 
-          {/* Content */}
+          {/* Right column: bio + stats + button */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="space-y-6"
+            className="space-y-8 max-w-xl"
           >
-            <h3 className="text-2xl md:text-3xl font-bold">
-              Java & <span className="gradient-text">Frontend Developer</span> | Clean Architecture, Scalable Systems, Better User Experience
-            </h3>
-            
-            <p className="text-muted-foreground leading-relaxed">
-              I'm Selvam M, a developer specializing in Java and modern frontend technologies. I build responsive, efficient web applications using Spring Boot, HTML, CSS, and JavaScript, with a focus on clean architecture and maintainable code.
+            <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
+              Java developer with expertise in Spring Boot and modern frontend technologies. Strong foundation in clean architecture and maintainable code. Passionate about building responsive, efficient, and scalable web applications. Seeking a Software Engineer role where I can apply my skills and grow in the field of software development.
             </p>
-            
-            <p className="text-muted-foreground leading-relaxed">
-              I have developed real-world projects, including a fashion e-commerce platform and a personal portfolio, applying mobile-first design and intuitive user interfaces.
-            </p>
-            
-            <p className="text-muted-foreground leading-relaxed">
-              I continuously strengthen my skills in software development and problem-solving, with a focus on delivering reliable and scalable solutions. I am seeking a Software Engineer role where I can contribute to building impactful digital products.
-            </p>
+
+            {/* Stats row */}
+            <div className="grid grid-cols-3 gap-4">
+              {stats.map((stat, index) => (
+                <motion.div
+                  key={stat.label}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={isInView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ delay: 0.6 + index * 0.1 }}
+                  className="text-left"
+                >
+                  <p className="text-2xl md:text-3xl font-bold text-foreground mb-2">
+                    {stat.value}
+                  </p>
+                  <p className="text-sm text-muted-foreground whitespace-pre-line leading-snug">
+                    {stat.label}
+                  </p>
+                </motion.div>
+              ))}
+            </div>
+
+            {/* Download Resume button */}
+            <motion.a
+              href="/resume.pdf"
+              download="Selvam_M_Resume.pdf"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.97 }}
+              className="inline-flex items-center gap-3 px-7 py-4 rounded-xl bg-secondary text-secondary-foreground font-semibold shadow-lg hover:shadow-secondary/40 transition-all"
+            >
+              Download Resume
+              <Download className="w-4 h-4" />
+            </motion.a>
           </motion.div>
         </div>
-
-        {/* Stats */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.6 }}
-          className="grid grid-cols-3 gap-6 mt-20"
-        >
-          {stats.map((stat, index) => (
-            <motion.div
-              key={stat.label}
-              className="glass rounded-2xl p-6 text-center group hover:glow-cyan transition-all duration-300"
-              whileHover={{ y: -5 }}
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: 0.8 + index * 0.1 }}
-            >
-              <stat.icon className="w-8 h-8 mx-auto mb-3 text-primary group-hover:scale-110 transition-transform" />
-              <p className="text-3xl md:text-4xl font-bold gradient-text mb-1">
-                {stat.value}
-              </p>
-              <p className="text-sm text-muted-foreground">{stat.label}</p>
-            </motion.div>
-          ))}
-        </motion.div>
       </div>
     </section>
   );
