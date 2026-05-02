@@ -1,137 +1,111 @@
-import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { motion, AnimatePresence, useInView } from "framer-motion";
+import { useRef, useState } from "react";
+import { ChevronDown } from "lucide-react";
 
-const skills = [
-  { name: "HTML", level: 90, category: "Frontend" },
-  { name: "CSS / Tailwind CSS", level: 88, category: "Frontend" },
-  { name: "JavaScript", level: 50, category: "Frontend" },
-  { name: "React", level: 58, category: "Frontend" },
-  { name: "Java", level: 90, category: "Backend" },
-  { name: "MySQL", level: 78, category: "Backend" },
-  { name: "Git & GitHub", level: 88, category: "Tools" },
-  { name: "VS Code / IntelliJ", level: 85, category: "Tools" },
-  { name: "Figma", level: 90, category: "Design" },
-  { name: "Responsive UI Design", level: 85, category: "Design" },
-];
-
-const techIcons = [
-  { emoji: "🔥", label: "Java" },
-  { emoji: "⚛️", label: "React" },
-  { emoji: "🌿", label: "Spring Boot" },
-  { emoji: "🗂️", label: "MySQL" },
-  { emoji: "🎨", label: "Figma" },
-  { emoji: "🛠️", label: "Git / GitHub" },
-];
-
-const SkillBar = ({ skill, index, isInView }: { skill: typeof skills[0]; index: number; isInView: boolean }) => {
-  return (
-    <motion.div
-      initial={{ opacity: 0, x: -30 }}
-      animate={isInView ? { opacity: 1, x: 0 } : {}}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
-      className="group"
-    >
-      <div className="flex justify-between mb-2">
-        <span className="font-medium text-foreground group-hover:text-primary transition-colors">
-          {skill.name}
-        </span>
-        <span className="text-primary font-mono">{skill.level}%</span>
-      </div>
-      <div className="h-3 bg-muted rounded-full overflow-hidden">
-        <motion.div
-          className="h-full rounded-full bg-gradient-to-r from-primary via-accent to-secondary relative"
-          initial={{ width: 0 }}
-          animate={isInView ? { width: `${skill.level}%` } : {}}
-          transition={{ duration: 1, delay: 0.5 + index * 0.1, ease: "easeOut" }}
-        >
-          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent animate-shimmer" 
-               style={{ backgroundSize: "200% 100%" }} />
-        </motion.div>
-      </div>
-    </motion.div>
-  );
+type Category = {
+  title: string;
+  items: string[];
 };
+
+const categories: Category[] = [
+  {
+    title: "Programming Languages",
+    items: ["Java", "Python", "JavaScript"],
+  },
+  {
+    title: "Technologies",
+    items: ["PostgreSQL", "MongoDB Atlas", "MySQL", "AWS", "Git", "HTML", "CSS"],
+  },
+  {
+    title: "IT Constructs",
+    items: ["DBMS", "DSA", "OOP", "OS", "Problem Solving"],
+  },
+];
 
 const SkillsSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const [openIndex, setOpenIndex] = useState<number | null>(0);
 
-  const categories = ["Frontend", "Backend", "Tools", "Design"];
+  const toggle = (i: number) => setOpenIndex(openIndex === i ? null : i);
 
   return (
     <section id="skills" className="section-padding relative overflow-hidden">
-      {/* Background */}
-      <div className="blur-orb w-[500px] h-[500px] bg-primary/15 -bottom-48 -left-48" />
-      <div className="blur-orb w-[300px] h-[300px] bg-accent/15 top-1/4 right-0" />
+      <div className="blur-orb w-[400px] h-[400px] bg-primary/10 top-1/3 -left-32" />
 
-      <div className="container-custom relative z-10" ref={ref}>
+      <div className="container-custom relative z-10 px-6 lg:px-16" ref={ref}>
+        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            My <span className="gradient-text">Skills</span>
+          <h2 className="text-4xl md:text-5xl font-bold mb-3 text-foreground">
+            Skills
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
-            Technologies and tools I work with to bring ideas to life
-          </p>
+          <p className="text-muted-foreground">My technical level</p>
         </motion.div>
 
-        {/* Category Tags */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="flex flex-wrap justify-center gap-3 mb-12"
-        >
-          {categories.map((category) => (
-            <motion.span
-              key={category}
-              className="px-6 py-2 glass rounded-full text-sm font-medium cursor-pointer hover:bg-primary/20 hover:border-primary/50 transition-all"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              {category}
-            </motion.span>
-          ))}
-        </motion.div>
-
-        {/* Skills Grid */}
-        <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-          {skills.map((skill, index) => (
-            <SkillBar key={skill.name} skill={skill} index={index} isInView={isInView} />
-          ))}
-        </div>
-
-        {/* Tech Icons Grid */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.8 }}
-          className="mt-16 flex flex-wrap justify-center gap-6"
-        >
-          {techIcons.map((tech, index) => (
-            <motion.div
-              key={tech.label}
-              className="flex flex-col items-center gap-2"
-              whileHover={{ scale: 1.1 }}
-            >
+        {/* Accordion grid */}
+        <div className="grid md:grid-cols-2 gap-x-12 gap-y-8 max-w-5xl mx-auto">
+          {categories.map((cat, i) => {
+            const isOpen = openIndex === i;
+            return (
               <motion.div
-                className="w-16 h-16 glass rounded-xl flex items-center justify-center text-3xl cursor-pointer"
-                whileHover={{ rotate: 10 }}
-                animate={{ y: [0, -5, 0] }}
-                transition={{
-                  y: { repeat: Infinity, duration: 2, delay: index * 0.2 },
-                }}
+                key={cat.title}
+                initial={{ opacity: 0, y: 20 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.5, delay: 0.2 + i * 0.1 }}
+                className="self-start"
               >
-                {tech.emoji}
+                <button
+                  onClick={() => toggle(i)}
+                  aria-expanded={isOpen}
+                  className="w-full flex items-center justify-between py-4 group"
+                >
+                  <span className="text-xl md:text-2xl font-bold text-foreground">
+                    {cat.title}
+                  </span>
+                  <motion.span
+                    animate={{ rotate: isOpen ? 180 : 0 }}
+                    transition={{ duration: 0.3 }}
+                    className="text-secondary"
+                  >
+                    <ChevronDown className="w-6 h-6" strokeWidth={2.5} />
+                  </motion.span>
+                </button>
+
+                <AnimatePresence initial={false}>
+                  {isOpen && (
+                    <motion.ul
+                      key="content"
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.35, ease: "easeInOut" }}
+                      className="overflow-hidden"
+                    >
+                      <div className="pl-8 pt-2 pb-2 space-y-4">
+                        {cat.items.map((item, idx) => (
+                          <motion.li
+                            key={item}
+                            initial={{ opacity: 0, x: -10 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ delay: idx * 0.05 }}
+                            className="text-base md:text-lg font-semibold text-foreground/90 list-none"
+                          >
+                            {item}
+                          </motion.li>
+                        ))}
+                      </div>
+                    </motion.ul>
+                  )}
+                </AnimatePresence>
               </motion.div>
-              <span className="text-xs text-muted-foreground">{tech.label}</span>
-            </motion.div>
-          ))}
-        </motion.div>
+            );
+          })}
+        </div>
       </div>
     </section>
   );
