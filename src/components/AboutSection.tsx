@@ -4,9 +4,9 @@ import { Download } from "lucide-react";
 import profilePhoto from "@/assets/selva.jpeg";
 
 const stats = [
-  { value: "8.4+", label: "Aggregate\nCGPA" },
+  { value: "8.1+", label: "Aggregate\nCGPA" },
   { value: "03+", label: "Projects" },
-  { value: "350+", label: "Problems Solved in\nLeetCode" },
+  { value: "400+", label: "Problems Solved in\nLeetCode" },
 ];
 
 const AboutSection = () => {
@@ -58,7 +58,7 @@ const AboutSection = () => {
             className="space-y-8 max-w-xl"
           >
             <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
-              Java developer with expertise in Spring Boot and modern frontend technologies. Strong foundation in clean architecture and maintainable code. Passionate about building responsive, efficient, and scalable web applications. Seeking a Software Engineer role where I can apply my skills and grow in the field of software development.
+              Java Developer with strong expertise in Spring Boot and modern frontend technologies. I have a solid foundation in clean architecture and writing maintainable, scalable code. Passionate about building responsive and efficient web applications, I am seeking a Software Engineer role where I can contribute effectively and continue to grow as a developer.
             </p>
 
             {/* Stats row */}
