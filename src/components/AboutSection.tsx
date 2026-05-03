@@ -83,8 +83,8 @@ const AboutSection = () => {
 
             {/* Download Resume button */}
             <motion.a
-              href="/resume.pdf"
-              download="Selvam_M_Resume.pdf"
+              href="/SELVAM_M_Resume.pdf"
+              download="SELVAM_M_Resume.pdf"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.97 }}
               className="inline-flex items-center gap-3 px-7 py-4 rounded-xl bg-secondary text-secondary-foreground font-semibold shadow-lg hover:shadow-secondary/40 transition-all"
