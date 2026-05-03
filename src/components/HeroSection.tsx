@@ -59,9 +59,8 @@ const HeroSection = () => {
             </h3>
 
             <p className="text-base md:text-lg text-muted-foreground mb-8 leading-relaxed">
-              I build responsive, efficient web applications using{" "}
-              <span className="text-foreground font-semibold">Spring Boot, HTML, CSS, and JavaScript</span>,
-              with a focus on clean architecture and maintainable code.
+              I build responsive, scalable web applications with{" "}
+              <span className="text-foreground font-semibold">Spring Boot</span> and modern web technologies, focusing on performance, clean design, and long-term maintainability.
             </p>
 
             <motion.a
