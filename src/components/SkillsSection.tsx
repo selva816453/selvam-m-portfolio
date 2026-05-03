@@ -10,11 +10,11 @@ type Category = {
 const categories: Category[] = [
   {
     title: "Programming Languages",
-    items: ["Java", "Python", "JavaScript"],
+    items: ["Java", "JavaScript"],
   },
   {
     title: "Technologies",
-    items: ["PostgreSQL", "MongoDB Atlas", "MySQL", "AWS", "Git", "HTML", "CSS"],
+    items: ["MySQL", "Git", "HTML", "CSS"],
   },
   {
     title: "IT Constructs",
