@@ -40,11 +40,11 @@ const AboutSection = () => {
             className="relative w-full max-w-[400px] aspect-square mx-auto lg:mx-0 lg:justify-self-end"
           >
             <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary to-secondary blur-2xl opacity-40" />
-            <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-secondary shadow-2xl">
+            <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-secondary shadow-2xl bg-background flex items-center justify-center">
               <img
                 src={profilePhoto}
                 alt="Selvam M"
-                className="w-full h-full object-cover"
+                className="w-full h-full object-contain"
               />
             </div>
           </motion.div>
