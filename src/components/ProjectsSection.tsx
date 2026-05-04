@@ -33,6 +33,17 @@ const projects: Project[] = [
       "https://images.unsplash.com/photo-1604719312566-8912e9227c6a?w=1200&q=80",
     ],
   },
+  {
+    title: "Unauthorized Person Detection System",
+    description:
+      "An AI-powered surveillance solution that detects and flags unauthorized individuals in restricted areas using computer vision. Designed for real-time monitoring with accurate face recognition and instant alerts to enhance security.",
+    tags: ["Python", "OpenCV", "Deep Learning", "Face Recognition"],
+    github: "https://github.com/selva816453/UnauthorizedPerson_Detection_System",
+    images: [
+      "https://images.unsplash.com/photo-1551808525-51a94da548ce?w=1200&q=80",
+      "https://images.unsplash.com/photo-1557597774-9d273605dfa9?w=1200&q=80",
+    ],
+  },
 ];
 
 const ProjectsSection = () => {
@@ -96,13 +107,13 @@ const ProjectsSection = () => {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.1 + i * 0.1 }}
-                    className="rounded-2xl overflow-hidden bg-white shadow-2xl mx-auto max-w-2xl border border-border/30"
+                    className="rounded-2xl overflow-hidden bg-white shadow-2xl mx-auto max-w-md border border-border/30"
                   >
                     <img
                       src={src}
                       alt={`${project.title} screenshot ${i + 1}`}
                       loading="lazy"
-                      className="w-full h-auto block"
+                      className="w-full h-auto block max-h-72 object-cover"
                     />
                   </motion.div>
                 ))}
