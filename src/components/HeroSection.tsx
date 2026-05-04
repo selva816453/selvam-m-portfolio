@@ -98,7 +98,7 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.2 }}
-          className="hidden md:inline-flex items-center gap-2 mt-16 ml-12 text-sm text-muted-foreground hover:text-primary transition-colors"
+          className="hidden md:flex items-center gap-2 mt-16 mx-auto w-fit text-sm text-muted-foreground hover:text-primary transition-colors"
         >
           <span className="w-5 h-8 rounded-full border-2 border-primary flex items-start justify-center p-1">
             <motion.span
