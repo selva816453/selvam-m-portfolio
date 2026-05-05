@@ -1,6 +1,6 @@
-import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
-import { Github, ExternalLink } from "lucide-react";
+import { motion, AnimatePresence, useInView } from "framer-motion";
+import { useRef, useState } from "react";
+import { ChevronLeft, ChevronRight, Github, ExternalLink } from "lucide-react";
 
 type Project = {
   title: string;
@@ -40,84 +40,27 @@ const projects: Project[] = [
   },
 ];
 
-const ProjectRow = ({ project, index }: { project: Project; index: number }) => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-80px" });
-  const reversed = index % 2 === 1;
-
-  return (
-    <div
-      ref={ref}
-      className={`grid lg:grid-cols-2 gap-10 lg:gap-16 items-center ${
-        reversed ? "lg:[&>*:first-child]:order-2" : ""
-      }`}
-    >
-      {/* Image */}
-      <motion.div
-        initial={{ opacity: 0, x: reversed ? 60 : -60 }}
-        animate={isInView ? { opacity: 1, x: 0 } : {}}
-        transition={{ duration: 0.7, ease: "easeOut" }}
-        className="relative group"
-      >
-        <div className="absolute -inset-4 rounded-3xl bg-gradient-to-br from-primary/30 to-secondary/30 blur-2xl opacity-50 group-hover:opacity-80 transition-opacity" />
-        <div className="relative rounded-2xl overflow-hidden border border-border/40 shadow-2xl bg-white">
-          <img
-            src={project.image}
-            alt={`${project.title} preview`}
-            loading="lazy"
-            className="w-full h-64 md:h-80 object-cover transition-transform duration-700 group-hover:scale-105"
-          />
-        </div>
-      </motion.div>
-
-      {/* Text */}
-      <motion.div
-        initial={{ opacity: 0, x: reversed ? -60 : 60 }}
-        animate={isInView ? { opacity: 1, x: 0 } : {}}
-        transition={{ duration: 0.7, ease: "easeOut", delay: 0.1 }}
-        className="space-y-5"
-      >
-        <p className="text-sm font-mono text-secondary tracking-wider">
-          PROJECT 0{index + 1}
-        </p>
-        <h3 className="text-2xl md:text-3xl font-bold text-foreground leading-tight">
-          {project.title}
-        </h3>
-        <p className="text-muted-foreground leading-relaxed text-base md:text-lg">
-          {project.description}
-        </p>
-
-        <div className="flex flex-wrap gap-2">
-          {project.tags.map((tag) => (
-            <span
-              key={tag}
-              className="text-xs font-mono px-3 py-1.5 bg-primary/10 rounded-full text-primary border border-primary/20"
-            >
-              {tag}
-            </span>
-          ))}
-        </div>
-
-        <motion.a
-          href={project.github}
-          target="_blank"
-          rel="noopener noreferrer"
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.97 }}
-          className="inline-flex items-center gap-3 px-6 py-3 rounded-xl bg-secondary text-secondary-foreground font-semibold shadow-lg hover:shadow-secondary/40 transition-all"
-        >
-          <Github className="w-5 h-5" />
-          GitHub
-          <ExternalLink className="w-4 h-4" />
-        </motion.a>
-      </motion.div>
-    </div>
-  );
-};
-
 const ProjectsSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const [index, setIndex] = useState(0);
+  const [direction, setDirection] = useState(1);
+
+  const project = projects[index];
+  const reversed = index % 2 === 1;
+
+  const next = () => {
+    setDirection(1);
+    setIndex((i) => (i + 1) % projects.length);
+  };
+  const prev = () => {
+    setDirection(-1);
+    setIndex((i) => (i - 1 + projects.length) % projects.length);
+  };
+  const goTo = (i: number) => {
+    setDirection(i > index ? 1 : -1);
+    setIndex(i);
+  };
 
   return (
     <section id="projects" className="section-padding relative overflow-hidden">
@@ -129,16 +72,108 @@ const ProjectsSection = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center mb-20"
+          className="text-center mb-16"
         >
           <h2 className="text-5xl md:text-6xl font-bold mb-3 text-foreground">Projects</h2>
           <p className="text-muted-foreground text-lg">Most recent work</p>
         </motion.div>
 
-        <div className="space-y-24 lg:space-y-32 max-w-6xl mx-auto">
-          {projects.map((p, i) => (
-            <ProjectRow key={p.title} project={p} index={i} />
-          ))}
+        <div className="relative max-w-6xl mx-auto">
+          {/* Arrows */}
+          <button
+            onClick={prev}
+            aria-label="Previous project"
+            className="absolute -left-2 md:-left-14 top-1/2 -translate-y-1/2 z-20 p-2 text-secondary hover:text-secondary/80 transition-colors"
+          >
+            <ChevronLeft className="w-10 h-10 md:w-12 md:h-12" strokeWidth={2.5} />
+          </button>
+          <button
+            onClick={next}
+            aria-label="Next project"
+            className="absolute -right-2 md:-right-14 top-1/2 -translate-y-1/2 z-20 p-2 text-secondary hover:text-secondary/80 transition-colors"
+          >
+            <ChevronRight className="w-10 h-10 md:w-12 md:h-12" strokeWidth={2.5} />
+          </button>
+
+          <div className="overflow-hidden px-4 md:px-12">
+            <AnimatePresence mode="wait" custom={direction}>
+              <motion.div
+                key={project.title}
+                custom={direction}
+                initial={{ opacity: 0, x: direction * 80 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: direction * -80 }}
+                transition={{ duration: 0.45, ease: "easeOut" }}
+                className={`grid lg:grid-cols-2 gap-10 lg:gap-16 items-center ${
+                  reversed ? "lg:[&>*:first-child]:order-2" : ""
+                }`}
+              >
+                {/* Image */}
+                <div className="relative group">
+                  <div className="absolute -inset-4 rounded-3xl bg-gradient-to-br from-primary/30 to-secondary/30 blur-2xl opacity-50 group-hover:opacity-80 transition-opacity" />
+                  <div className="relative rounded-2xl overflow-hidden border border-border/40 shadow-2xl bg-white">
+                    <img
+                      src={project.image}
+                      alt={`${project.title} preview`}
+                      loading="lazy"
+                      className="w-full h-64 md:h-80 object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                  </div>
+                </div>
+
+                {/* Text */}
+                <div className="space-y-5">
+                  <p className="text-sm font-mono text-secondary tracking-wider">
+                    PROJECT 0{index + 1}
+                  </p>
+                  <h3 className="text-2xl md:text-3xl font-bold text-foreground leading-tight">
+                    {project.title}
+                  </h3>
+                  <p className="text-muted-foreground leading-relaxed text-base md:text-lg">
+                    {project.description}
+                  </p>
+
+                  <div className="flex flex-wrap gap-2">
+                    {project.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="text-xs font-mono px-3 py-1.5 bg-primary/10 rounded-full text-primary border border-primary/20"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+
+                  <motion.a
+                    href={project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.97 }}
+                    className="inline-flex items-center gap-3 px-6 py-3 rounded-xl bg-secondary text-secondary-foreground font-semibold shadow-lg hover:shadow-secondary/40 transition-all"
+                  >
+                    <Github className="w-5 h-5" />
+                    GitHub
+                    <ExternalLink className="w-4 h-4" />
+                  </motion.a>
+                </div>
+              </motion.div>
+            </AnimatePresence>
+          </div>
+
+          {/* Dots */}
+          <div className="flex justify-center gap-2 mt-12">
+            {projects.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => goTo(i)}
+                aria-label={`Go to project ${i + 1}`}
+                className={`h-2 rounded-full transition-all ${
+                  i === index ? "w-8 bg-secondary" : "w-2 bg-muted-foreground/40"
+                }`}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </section>
@@ -146,4 +181,3 @@ const ProjectsSection = () => {
 };
 
 export default ProjectsSection;
-
