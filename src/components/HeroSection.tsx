@@ -12,11 +12,11 @@ const HeroSection = () => {
       <div className="blur-orb w-[400px] h-[400px] bg-primary/10 -top-32 -left-32" />
       <div className="blur-orb w-[400px] h-[400px] bg-secondary/10 -bottom-32 -right-32" />
 
-      <div className="container-custom relative z-10 px-6 lg:px-16">
-        <div className="grid grid-cols-[auto_1fr] lg:grid-cols-[auto_1fr_auto] items-center gap-8 lg:gap-16">
-          {/* Vertical Social Icons */}
+      <div className="container-custom relative z-10 px-6 lg:px-16 py-20 lg:py-0">
+        <div className="flex flex-col items-center text-center gap-10 lg:grid lg:grid-cols-[auto_1fr_auto] lg:items-center lg:text-left lg:gap-16">
+          {/* Social Icons - horizontal on mobile, vertical on desktop */}
           <motion.div
-            className="flex flex-col gap-6 items-center"
+            className="flex flex-row lg:flex-col gap-6 items-center order-3 lg:order-1"
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.4, duration: 0.6 }}
@@ -43,12 +43,29 @@ const HeroSection = () => {
             ))}
           </motion.div>
 
+          {/* Circular Portrait - shown above text on mobile, right side on desktop */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.3, duration: 0.8, type: "spring" }}
+            className="relative w-[220px] h-[220px] sm:w-[260px] sm:h-[260px] lg:w-[320px] lg:h-[320px] xl:w-[380px] xl:h-[380px] order-1 lg:order-3 lg:justify-self-end"
+          >
+            <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary to-secondary blur-2xl opacity-40" />
+            <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-secondary shadow-2xl bg-background flex items-center justify-center">
+              <img
+                src={profilePhoto}
+                alt="Selvam M"
+                className="w-full h-full object-cover object-top brightness-110 contrast-105 saturate-110"
+              />
+            </div>
+          </motion.div>
+
           {/* Text Content */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="max-w-xl"
+            className="max-w-xl order-2 lg:order-2"
           >
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-4 text-foreground leading-tight">
               Hi, I'm <span className="gradient-text">Selvam M</span>
@@ -72,23 +89,6 @@ const HeroSection = () => {
               Contact me
               <Send className="w-4 h-4" />
             </motion.a>
-          </motion.div>
-
-          {/* Circular Portrait - face centered inside frame */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.3, duration: 0.8, type: "spring" }}
-            className="hidden lg:block relative w-[320px] h-[320px] xl:w-[380px] xl:h-[380px] justify-self-end"
-          >
-            <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary to-secondary blur-2xl opacity-40" />
-            <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-secondary shadow-2xl bg-background flex items-center justify-center">
-              <img
-                src={profilePhoto}
-                alt="Selvam M"
-                className="w-full h-full object-cover object-top brightness-110 contrast-105 saturate-110"
-              />
-            </div>
           </motion.div>
         </div>
 
