@@ -44,7 +44,7 @@ const AboutSection = () => {
               <img
                 src={profilePhoto}
                 alt="Selvam M"
-                className="w-full h-full object-contain"
+                className="w-full h-full object-cover"
               />
             </div>
           </motion.div>
