@@ -53,34 +53,34 @@ const ContactSection = () => {
       <div className="blur-orb w-[500px] h-[500px] bg-primary/10 -bottom-48 left-1/2 -translate-x-1/2" />
       <div className="blur-orb w-[300px] h-[300px] bg-secondary/15 top-32 -left-32" />
 
-      <div className="container-custom relative z-10" ref={ref}>
+      <div className="container-custom relative z-10 px-5 sm:px-6 lg:px-16" ref={ref}>
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-10 md:mb-16"
         >
-          <h2 className="text-5xl md:text-6xl font-bold mb-3">Contact Me</h2>
-          <p className="text-muted-foreground text-lg">Get in touch</p>
+          <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold mb-3">Contact Me</h2>
+          <p className="text-muted-foreground text-base md:text-lg">Get in touch</p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-16 max-w-6xl mx-auto items-start">
+        <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 max-w-6xl mx-auto items-start">
           {/* Contact Info */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="space-y-10 lg:pl-8"
+            className="space-y-7 sm:space-y-10 lg:pl-8"
           >
             {contactInfo.map((info, index) => {
               const Icon = info.icon;
               const content = (
                 <div className="flex items-start gap-5 group">
-                  <Icon className="w-9 h-9 text-primary flex-shrink-0 mt-1 transition-transform group-hover:scale-110" strokeWidth={1.5} />
+                  <Icon className="w-7 h-7 sm:w-9 sm:h-9 text-primary flex-shrink-0 mt-1 transition-transform group-hover:scale-110" strokeWidth={1.5} />
                   <div>
-                    <h3 className="text-xl font-bold text-foreground mb-1">{info.title}</h3>
-                    <p className="text-muted-foreground">{info.value}</p>
+                    <h3 className="text-lg sm:text-xl font-bold text-foreground mb-1">{info.title}</h3>
+                    <p className="text-sm sm:text-base text-muted-foreground">{info.value}</p>
                   </div>
                 </div>
               );
@@ -109,7 +109,7 @@ const ContactSection = () => {
             initial={{ opacity: 0, x: 30 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="space-y-6"
+            className="space-y-4 sm:space-y-6"
           >
             <input
               type="text"
