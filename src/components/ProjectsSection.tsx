@@ -1,6 +1,9 @@
 import { motion, AnimatePresence, useInView } from "framer-motion";
 import { useRef, useState } from "react";
 import { ChevronLeft, ChevronRight, Github, ExternalLink } from "lucide-react";
+import projectLostFound from "@/assets/project-lost-found.jpg";
+import projectGrocery from "@/assets/project-grocery.jpg";
+import projectDetection from "@/assets/project-detection.jpg";
 
 type Project = {
   title: string;
@@ -17,8 +20,7 @@ const projects: Project[] = [
       "A web platform that helps students and staff report, track, and recover lost items across the campus. Built with a clean UI, real-time updates, and a simple workflow that makes posting and claiming items effortless.",
     tags: ["React", "TypeScript", "Tailwind CSS", "Supabase"],
     github: "https://github.com/selva816453/college-lost-and-found-system",
-    image:
-      "https://images.unsplash.com/photo-1531403009284-440f080d1e12?w=1200&q=80",
+    image: projectLostFound,
   },
   {
     title: "E-Commerce Grocery Website",
@@ -26,8 +28,7 @@ const projects: Project[] = [
       "A responsive grocery e-commerce experience featuring a product catalog, dynamic shopping cart, and smooth browsing across devices. Focused on a fast, accessible UI that mirrors a real online grocery store.",
     tags: ["HTML", "CSS", "JavaScript", "Responsive Design"],
     github: "https://github.com/selva816453/Grocery-website-clone",
-    image:
-      "https://images.unsplash.com/photo-1542838132-92c53300491e?w=1200&q=80",
+    image: projectGrocery,
   },
   {
     title: "Unauthorized Person Detection System",
@@ -35,8 +36,7 @@ const projects: Project[] = [
       "An AI-powered surveillance solution that detects and flags unauthorized individuals in restricted areas using computer vision. Designed for real-time monitoring with accurate face recognition and instant alerts to enhance security.",
     tags: ["Python", "OpenCV", "Deep Learning", "Face Recognition"],
     github: "https://github.com/selva816453/UnauthorizedPerson_Detection_System",
-    image:
-      "https://images.unsplash.com/photo-1551808525-51a94da548ce?w=1200&q=80",
+    image: projectDetection,
   },
 ];
 
