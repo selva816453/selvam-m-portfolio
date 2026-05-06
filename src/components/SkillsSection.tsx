@@ -33,22 +33,22 @@ const SkillsSection = () => {
     <section id="skills" className="section-padding relative overflow-hidden">
       <div className="blur-orb w-[400px] h-[400px] bg-primary/10 top-1/3 -left-32" />
 
-      <div className="container-custom relative z-10 px-6 lg:px-16" ref={ref}>
+      <div className="container-custom relative z-10 px-5 sm:px-6 lg:px-16" ref={ref}>
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-10 md:mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-3 text-foreground">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 text-foreground">
             Skills
           </h2>
           <p className="text-muted-foreground">My technical level</p>
         </motion.div>
 
         {/* Accordion grid */}
-        <div className="grid md:grid-cols-2 gap-x-12 gap-y-8 max-w-5xl mx-auto">
+        <div className="grid sm:grid-cols-2 gap-x-8 lg:gap-x-12 gap-y-4 sm:gap-y-8 max-w-5xl mx-auto">
           {categories.map((cat, i) => {
             const isOpen = openIndex === i;
             return (
@@ -62,9 +62,9 @@ const SkillsSection = () => {
                 <button
                   onClick={() => toggle(i)}
                   aria-expanded={isOpen}
-                  className="w-full flex items-center justify-between py-4 group"
+                  className="w-full flex items-center justify-between gap-3 py-3 sm:py-4 group text-left"
                 >
-                  <span className="text-xl md:text-2xl font-bold text-foreground">
+                  <span className="text-lg sm:text-xl md:text-2xl font-bold text-foreground">
                     {cat.title}
                   </span>
                   <motion.span
@@ -86,14 +86,14 @@ const SkillsSection = () => {
                       transition={{ duration: 0.35, ease: "easeInOut" }}
                       className="overflow-hidden"
                     >
-                      <div className="pl-8 pt-2 pb-2 space-y-4">
+                      <div className="pl-5 sm:pl-8 pt-2 pb-2 space-y-3 sm:space-y-4">
                         {cat.items.map((item, idx) => (
                           <motion.li
                             key={item}
                             initial={{ opacity: 0, x: -10 }}
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ delay: idx * 0.05 }}
-                            className="text-base md:text-lg font-semibold text-foreground/90 list-none"
+                            className="text-sm sm:text-base md:text-lg font-semibold text-foreground/90 list-none"
                           >
                             {item}
                           </motion.li>
