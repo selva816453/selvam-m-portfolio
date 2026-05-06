@@ -301,7 +301,7 @@
 
   /* Section padding */
   .section-padding {
-    @apply py-20 md:py-32 px-4 md:px-8;
+    @apply py-16 md:py-32 px-0 md:px-8;
   }
 
   /* Container max width */
