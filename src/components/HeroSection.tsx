@@ -6,14 +6,14 @@ const HeroSection = () => {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center overflow-hidden"
+      className="relative min-h-screen flex items-center overflow-hidden pt-20 lg:pt-0"
     >
       {/* Subtle gradient orbs to keep depth without breaking the clean dark theme */}
       <div className="blur-orb w-[400px] h-[400px] bg-primary/10 -top-32 -left-32" />
       <div className="blur-orb w-[400px] h-[400px] bg-secondary/10 -bottom-32 -right-32" />
 
-      <div className="container-custom relative z-10 px-6 lg:px-16 py-20 lg:py-0">
-        <div className="flex flex-col items-center text-center gap-10 lg:grid lg:grid-cols-[auto_1fr_auto] lg:items-center lg:text-left lg:gap-16">
+      <div className="container-custom relative z-10 px-5 sm:px-6 lg:px-16 py-12 lg:py-0">
+        <div className="flex flex-col items-center text-center gap-8 lg:grid lg:grid-cols-[auto_1fr_auto] lg:items-center lg:text-left lg:gap-16">
           {/* Social Icons - horizontal on mobile, vertical on desktop */}
           <motion.div
             className="flex flex-row lg:flex-col gap-6 items-center order-3 lg:order-1"
@@ -48,7 +48,7 @@ const HeroSection = () => {
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.3, duration: 0.8, type: "spring" }}
-            className="relative w-[220px] h-[220px] sm:w-[260px] sm:h-[260px] lg:w-[320px] lg:h-[320px] xl:w-[380px] xl:h-[380px] order-1 lg:order-3 lg:justify-self-end"
+            className="relative w-[190px] h-[190px] sm:w-[260px] sm:h-[260px] lg:w-[320px] lg:h-[320px] xl:w-[380px] xl:h-[380px] order-1 lg:order-3 lg:justify-self-end"
           >
             <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary to-secondary blur-2xl opacity-40" />
             <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-secondary shadow-2xl bg-background flex items-center justify-center">
@@ -67,15 +67,15 @@ const HeroSection = () => {
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="max-w-xl order-2 lg:order-2"
           >
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-4 text-foreground leading-tight">
+            <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold mb-4 text-foreground leading-tight">
               Hi, I'm <span className="gradient-text">Selvam M</span>
             </h1>
 
-            <h3 className="text-lg md:text-2xl font-medium text-muted-foreground mb-6">
+            <h3 className="text-base sm:text-lg md:text-2xl font-medium text-muted-foreground mb-6">
               Java &amp; Frontend Developer
             </h3>
 
-            <p className="text-base md:text-lg text-muted-foreground mb-8 leading-relaxed">
+            <p className="text-sm sm:text-base md:text-lg text-muted-foreground mb-7 leading-relaxed">
               I build responsive, scalable web applications with{" "}
               <span className="text-foreground font-semibold">Spring Boot</span> and modern web technologies, focusing on performance, clean design, and long-term maintainability.
             </p>
