@@ -31,12 +31,12 @@ const Navbar = () => {
         animate={{ y: 0 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isScrolled ? "glass py-4" : "py-6"
+          isScrolled ? "glass py-3 lg:py-4" : "glass/80 py-3 lg:bg-transparent lg:py-6"
         }`}
       >
         <div className="container-custom flex items-center justify-center px-4 md:px-8">
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden lg:flex items-center gap-8">
             {navItems.map((item, index) => (
               <motion.a
                 key={item.name}
@@ -56,7 +56,7 @@ const Navbar = () => {
           <Button
             variant="ghost"
             size="icon"
-            className="md:hidden"
+            className="lg:hidden"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
             {isMobileMenuOpen ? <X /> : <Menu />}
@@ -72,7 +72,7 @@ const Navbar = () => {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: "100%" }}
             transition={{ type: "spring", damping: 25 }}
-            className="fixed inset-0 z-40 glass-strong md:hidden pt-24"
+            className="fixed inset-0 z-40 glass-strong lg:hidden pt-24"
           >
             <div className="flex flex-col items-center gap-8 p-8">
               {navItems.map((item, index) => (
