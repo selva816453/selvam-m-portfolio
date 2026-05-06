@@ -67,15 +67,15 @@ const ProjectsSection = () => {
       <div className="blur-orb w-[500px] h-[500px] bg-primary/10 -top-40 right-0" />
       <div className="blur-orb w-[400px] h-[400px] bg-secondary/10 bottom-0 left-1/4" />
 
-      <div className="container-custom relative z-10 px-6 lg:px-16" ref={ref}>
+      <div className="container-custom relative z-10 px-5 sm:px-6 lg:px-16" ref={ref}>
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-10 md:mb-16"
         >
-          <h2 className="text-5xl md:text-6xl font-bold mb-3 text-foreground">Projects</h2>
-          <p className="text-muted-foreground text-lg">Most recent work</p>
+          <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold mb-3 text-foreground">Projects</h2>
+          <p className="text-muted-foreground text-base md:text-lg">Most recent work</p>
         </motion.div>
 
         <div className="relative max-w-6xl mx-auto">
@@ -83,19 +83,19 @@ const ProjectsSection = () => {
           <button
             onClick={prev}
             aria-label="Previous project"
-            className="absolute -left-2 md:-left-14 top-1/2 -translate-y-1/2 z-20 p-2 text-secondary hover:text-secondary/80 transition-colors"
+            className="absolute -left-4 sm:-left-2 md:-left-14 top-28 sm:top-1/2 sm:-translate-y-1/2 z-20 p-1.5 sm:p-2 text-secondary hover:text-secondary/80 transition-colors"
           >
-            <ChevronLeft className="w-10 h-10 md:w-12 md:h-12" strokeWidth={2.5} />
+            <ChevronLeft className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12" strokeWidth={2.5} />
           </button>
           <button
             onClick={next}
             aria-label="Next project"
-            className="absolute -right-2 md:-right-14 top-1/2 -translate-y-1/2 z-20 p-2 text-secondary hover:text-secondary/80 transition-colors"
+            className="absolute -right-4 sm:-right-2 md:-right-14 top-28 sm:top-1/2 sm:-translate-y-1/2 z-20 p-1.5 sm:p-2 text-secondary hover:text-secondary/80 transition-colors"
           >
-            <ChevronRight className="w-10 h-10 md:w-12 md:h-12" strokeWidth={2.5} />
+            <ChevronRight className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12" strokeWidth={2.5} />
           </button>
 
-          <div className="overflow-hidden px-4 md:px-12">
+          <div className="overflow-hidden px-5 md:px-12">
             <AnimatePresence mode="wait" custom={direction}>
               <motion.div
                 key={project.title}
@@ -104,7 +104,7 @@ const ProjectsSection = () => {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: direction * -80 }}
                 transition={{ duration: 0.45, ease: "easeOut" }}
-                className={`grid lg:grid-cols-2 gap-10 lg:gap-16 items-center ${
+                className={`grid lg:grid-cols-2 gap-6 sm:gap-10 lg:gap-16 items-center ${
                   reversed ? "lg:[&>*:first-child]:order-2" : ""
                 }`}
               >
@@ -116,20 +116,20 @@ const ProjectsSection = () => {
                       src={project.image}
                       alt={`${project.title} preview`}
                       loading="lazy"
-                      className="w-full h-64 md:h-80 object-cover transition-transform duration-700 group-hover:scale-105"
+                    className="w-full h-48 sm:h-64 md:h-80 object-cover transition-transform duration-700 group-hover:scale-105"
                     />
                   </div>
                 </div>
 
                 {/* Text */}
-                <div className="space-y-5">
-                  <p className="text-sm font-mono text-secondary tracking-wider">
+                <div className="space-y-4 sm:space-y-5">
+                  <p className="text-xs sm:text-sm font-mono text-secondary tracking-wider">
                     PROJECT 0{index + 1}
                   </p>
-                  <h3 className="text-2xl md:text-3xl font-bold text-foreground leading-tight">
+                  <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-foreground leading-tight">
                     {project.title}
                   </h3>
-                  <p className="text-muted-foreground leading-relaxed text-base md:text-lg">
+                  <p className="text-muted-foreground leading-relaxed text-sm sm:text-base md:text-lg">
                     {project.description}
                   </p>
 
@@ -162,7 +162,7 @@ const ProjectsSection = () => {
           </div>
 
           {/* Dots */}
-          <div className="flex justify-center gap-2 mt-12">
+          <div className="flex justify-center gap-2 mt-8 md:mt-12">
             {projects.map((_, i) => (
               <button
                 key={i}
