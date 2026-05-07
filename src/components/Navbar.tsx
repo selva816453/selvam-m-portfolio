@@ -36,7 +36,18 @@ const Navbar = () => {
             : "bg-card/70 backdrop-blur-xl border-b border-border/40 py-3 lg:bg-transparent lg:backdrop-blur-none lg:border-transparent lg:py-6"
         }`}
       >
-        <div className="container-custom flex items-center justify-center px-4 md:px-8">
+        <div className="container-custom flex items-center justify-between px-4 md:px-8">
+          {/* Logo / Name */}
+          <motion.a
+            href="#home"
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5 }}
+            className="text-lg lg:text-xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent"
+          >
+            Selvam M
+          </motion.a>
+
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center gap-8">
             {navItems.map((item, index) => (
