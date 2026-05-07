@@ -94,7 +94,7 @@ const LeetCodeSection = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-10 md:mb-12"
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 text-foreground">
+          <h2 className="text-4xl sm:text-5xl md:text-5xl font-bold mb-3 text-foreground">
             LeetCode Stats
           </h2>
           <p className="text-muted-foreground">Problem-solving journey</p>
