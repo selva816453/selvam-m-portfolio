@@ -61,7 +61,7 @@ const ContactSection = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-10 md:mb-16"
         >
-          <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold mb-3">Contact Me</h2>
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-3">Contact Me</h2>
           <p className="text-muted-foreground text-base md:text-lg">Get in touch</p>
         </motion.div>
 
