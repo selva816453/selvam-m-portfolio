@@ -38,7 +38,7 @@ const HeroSection = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5 + i * 0.1 }}
               >
-                <s.icon className="w-5 h-5" />
+                <s.icon className="w-6 h-6 sm:w-5 sm:h-5" />
               </motion.a>
             ))}
           </motion.div>
@@ -48,7 +48,7 @@ const HeroSection = () => {
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.3, duration: 0.8, type: "spring" }}
-            className="relative w-[190px] h-[190px] sm:w-[260px] sm:h-[260px] lg:w-[320px] lg:h-[320px] xl:w-[380px] xl:h-[380px] order-1 lg:order-3 lg:justify-self-end"
+            className="relative w-[240px] h-[240px] sm:w-[280px] sm:h-[280px] lg:w-[320px] lg:h-[320px] xl:w-[380px] xl:h-[380px] order-1 lg:order-3 lg:justify-self-end"
           >
             <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary to-secondary blur-2xl opacity-40" />
             <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-secondary shadow-2xl bg-background flex items-center justify-center">
@@ -67,15 +67,15 @@ const HeroSection = () => {
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="max-w-xl order-2 lg:order-2"
           >
-            <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold mb-4 text-foreground leading-tight">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 text-foreground leading-tight">
               Hi, I'm <span className="gradient-text">Selvam M</span>
             </h1>
 
-            <h3 className="text-base sm:text-lg md:text-2xl font-medium text-muted-foreground mb-6">
+            <h3 className="text-lg sm:text-xl md:text-2xl font-medium text-muted-foreground mb-6">
               Java &amp; Frontend Developer
             </h3>
 
-            <p className="text-sm sm:text-base md:text-lg text-muted-foreground mb-7 leading-relaxed">
+            <p className="text-base sm:text-base md:text-lg text-muted-foreground mb-7 leading-relaxed">
               I build responsive, scalable web applications with{" "}
               <span className="text-foreground font-semibold">Spring Boot</span> and modern web technologies, focusing on performance, clean design, and long-term maintainability.
             </p>
