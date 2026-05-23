@@ -92,24 +92,6 @@ const HeroSection = () => {
           </motion.div>
         </div>
 
-        {/* Scroll down indicator */}
-        <motion.a
-          href="#about"
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.2 }}
-          className="hidden md:flex items-center gap-2 mt-16 mx-auto w-fit text-sm text-muted-foreground hover:text-primary transition-colors"
-        >
-          <span className="w-5 h-8 rounded-full border-2 border-primary flex items-start justify-center p-1">
-            <motion.span
-              className="w-1 h-1.5 rounded-full bg-primary"
-              animate={{ y: [0, 8, 0] }}
-              transition={{ duration: 1.6, repeat: Infinity }}
-            />
-          </span>
-          Scroll down
-          <ArrowDown className="w-4 h-4" />
-        </motion.a>
       </div>
     </section>
   );
