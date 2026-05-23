@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Github, Linkedin, Instagram, Mail, Send, MouseIcon, ArrowDown } from "lucide-react";
+import { Github, Linkedin, Instagram, Mail, Send } from "lucide-react";
 import profilePhoto from "@/assets/selvam-profile.jpeg";
 
 const HeroSection = () => {
