@@ -26,15 +26,6 @@ const SkillsSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
-  const cardVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: (i: number) => ({
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.6, delay: 0.15 + i * 0.12, ease: "easeOut" },
-    }),
-  };
-
   return (
     <section id="skills" className="section-padding relative overflow-hidden">
       <div className="blur-orb w-[400px] h-[400px] bg-primary/10 top-1/3 -left-32" />
