@@ -53,10 +53,9 @@ const SkillsSection = () => {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-4 sm:gap-6 max-w-6xl mx-auto">
           {/* Programming Languages - Large (7 cols) */}
           <motion.div
-            custom={0}
-            initial="hidden"
-            animate={isInView ? "visible" : "hidden"}
-            variants={cardVariants}
+            initial={{ opacity: 0, y: 30 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.15 }}
             className="md:col-span-7 group relative bg-card/40 backdrop-blur-xl border border-border/50 rounded-3xl p-6 sm:p-8 hover:bg-card/60 transition-all duration-500 overflow-hidden"
           >
             <div className="absolute -top-24 -right-24 w-48 h-48 bg-primary/10 blur-3xl group-hover:bg-primary/20 transition-all duration-500" />
@@ -79,7 +78,7 @@ const SkillsSection = () => {
                         className="h-full bg-gradient-to-r from-primary to-accent rounded-full"
                         initial={{ width: 0 }}
                         animate={isInView ? { width: `${skill.level}%` } : { width: 0 }}
-                        transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
+                        transition={{ duration: 1, delay: 0.5 }}
                       />
                     </div>
                   </div>
@@ -90,10 +89,9 @@ const SkillsSection = () => {
 
           {/* Technologies - Medium (5 cols) */}
           <motion.div
-            custom={1}
-            initial="hidden"
-            animate={isInView ? "visible" : "hidden"}
-            variants={cardVariants}
+            initial={{ opacity: 0, y: 30 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.27 }}
             className="md:col-span-5 group relative bg-card/40 backdrop-blur-xl border border-border/50 rounded-3xl p-6 sm:p-8 hover:bg-card/60 transition-all duration-500"
           >
             <div className="absolute -bottom-12 -left-12 w-32 h-32 bg-secondary/10 blur-3xl" />
@@ -126,10 +124,9 @@ const SkillsSection = () => {
 
           {/* IT Constructs - Full Width (12 cols) */}
           <motion.div
-            custom={2}
-            initial="hidden"
-            animate={isInView ? "visible" : "hidden"}
-            variants={cardVariants}
+            initial={{ opacity: 0, y: 30 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.39 }}
             className="md:col-span-12 group relative bg-card/40 backdrop-blur-xl border border-border/50 rounded-3xl p-6 sm:p-8 hover:bg-card/60 transition-all duration-500"
           >
             <div className="relative z-10">
