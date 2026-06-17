@@ -65,12 +65,10 @@ const ProjectsSection = () => {
           transition={{ duration: 0.6 }}
           className="mb-12 md:mb-20 text-center"
         >
-          <p className="text-xs sm:text-sm font-mono text-secondary tracking-[0.4em] mb-4">
-            ── SELECTED WORK ──
-          </p>
           <h2 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-foreground tracking-tight">
             Pro<span className="gradient-text italic">jects</span>
           </h2>
+
         </motion.div>
 
         {/* Zigzag magazine layout */}
