@@ -1,13 +1,16 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Github, ArrowUpRight } from "lucide-react";
+import lostFoundImg from "@/assets/project-lostfound.jpg";
+import groceryImg from "@/assets/project-grocery.jpg";
+import surveillanceImg from "@/assets/project-surveillance.jpg";
 
 type Project = {
   title: string;
   description: string;
   tags: string[];
   github: string;
-  repo: string;
+  image: string;
   year: string;
   role: string;
 };
@@ -18,8 +21,8 @@ const projects: Project[] = [
     description:
       "A web platform that helps students and staff report, track, and recover lost items across the campus with real-time updates and an effortless claim workflow.",
     tags: ["React", "TypeScript", "Tailwind", "Supabase"],
-    github: "https://github.com/selva816453/college-lost-and-found-system",
-    repo: "selva816453/college-lost-and-found-system",
+    github: "https://github.com/selva816453/Lost-and-Found-Monitoring-System",
+    image: lostFoundImg,
     year: "2025",
     role: "Full-stack",
   },
@@ -29,7 +32,7 @@ const projects: Project[] = [
       "A responsive grocery e-commerce experience featuring a product catalog, dynamic shopping cart, and smooth browsing across devices.",
     tags: ["HTML", "CSS", "JavaScript", "Responsive"],
     github: "https://github.com/selva816453/Grocery-website-clone",
-    repo: "selva816453/Grocery-website-clone",
+    image: groceryImg,
     year: "2024",
     role: "Frontend",
   },
@@ -39,14 +42,11 @@ const projects: Project[] = [
       "An AI-powered surveillance solution that detects and flags unauthorized individuals in restricted areas using computer vision and face recognition.",
     tags: ["Python", "OpenCV", "Deep Learning", "Face Recognition"],
     github: "https://github.com/selva816453/UnauthorizedPerson_Detection_System",
-    repo: "selva816453/UnauthorizedPerson_Detection_System",
+    image: surveillanceImg,
     year: "2024",
     role: "ML / Vision",
   },
 ];
-
-const livePreview = (repo: string) =>
-  `https://opengraph.githubassets.com/${Date.now()}/${repo}`;
 
 const ProjectsSection = () => {
   const ref = useRef(null);
