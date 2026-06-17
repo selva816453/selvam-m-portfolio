@@ -67,6 +67,27 @@ const HeroSection = () => {
               Contact me
               <Send className="w-4 h-4" />
             </motion.a>
+
+            {/* Social links */}
+            <div className="flex items-center gap-3 mt-5">
+              {heroSocials.map((s, i) => (
+                <motion.a
+                  key={s.label}
+                  href={s.href}
+                  target={s.href.startsWith("http") ? "_blank" : undefined}
+                  rel="noopener noreferrer"
+                  aria-label={s.label}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.9 + i * 0.1 }}
+                  whileHover={{ scale: 1.15, y: -2 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="w-10 h-10 flex items-center justify-center rounded-lg bg-card/40 backdrop-blur-xl border border-border/50 text-primary hover:border-primary hover:shadow-[0_0_20px_-5px_hsl(var(--primary)/0.5)] transition-all duration-300"
+                >
+                  <s.icon className="w-4 h-4" />
+                </motion.a>
+              ))}
+            </div>
           </motion.div>
         </div>
 
