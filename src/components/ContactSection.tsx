@@ -1,8 +1,15 @@
 import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
-import { Send, Mail, Phone, MapPin } from "lucide-react";
+import { Send, Mail, Phone, MapPin, Github, Linkedin, Instagram } from "lucide-react";
 import { Button } from "./ui/button";
 import { useToast } from "@/hooks/use-toast";
+
+const socialLinks = [
+  { icon: Linkedin, href: "https://www.linkedin.com/in/selvam-m-350562324/", label: "LinkedIn" },
+  { icon: Github, href: "https://github.com/selva816453", label: "GitHub" },
+  { icon: Instagram, href: "https://www.instagram.com/_s_e_l_v_a_27/", label: "Instagram" },
+  { icon: Mail, href: "mailto:selva816453@gmail.com", label: "Email" },
+];
 
 const contactInfo = [
   {
@@ -101,6 +108,37 @@ const ContactSection = () => {
                 </motion.div>
               );
             })}
+
+            {/* Social Links */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ delay: 0.6 }}
+              className="pt-2"
+            >
+              <h3 className="text-sm font-mono text-muted-foreground tracking-[0.3em] mb-4 uppercase">
+                Connect
+              </h3>
+              <div className="flex flex-wrap gap-3">
+                {socialLinks.map((s, i) => (
+                  <motion.a
+                    key={s.label}
+                    href={s.href}
+                    target={s.href.startsWith("http") ? "_blank" : undefined}
+                    rel="noopener noreferrer"
+                    aria-label={s.label}
+                    whileHover={{ scale: 1.1, y: -3 }}
+                    whileTap={{ scale: 0.95 }}
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={isInView ? { opacity: 1, scale: 1 } : {}}
+                    transition={{ delay: 0.7 + i * 0.08 }}
+                    className="w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center rounded-xl bg-card/40 backdrop-blur-xl border border-border/50 text-primary hover:border-primary hover:shadow-[0_0_25px_-5px_hsl(var(--primary)/0.6)] transition-all duration-300"
+                  >
+                    <s.icon className="w-5 h-5 sm:w-6 sm:h-6" />
+                  </motion.a>
+                ))}
+              </div>
+            </motion.div>
           </motion.div>
 
           {/* Contact Form */}
