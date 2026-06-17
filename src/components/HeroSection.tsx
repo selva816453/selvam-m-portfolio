@@ -1,6 +1,13 @@
 import { motion } from "framer-motion";
-import { Send } from "lucide-react";
+import { Send, Github, Linkedin, Instagram, Mail } from "lucide-react";
 import profilePhoto from "@/assets/selvam-profile.jpeg";
+
+const heroSocials = [
+  { icon: Linkedin, href: "https://www.linkedin.com/in/selvam-m-350562324/", label: "LinkedIn" },
+  { icon: Github, href: "https://github.com/selva816453", label: "GitHub" },
+  { icon: Instagram, href: "https://www.instagram.com/_s_e_l_v_a_27/", label: "Instagram" },
+  { icon: Mail, href: "mailto:selva816453@gmail.com", label: "Email" },
+];
 
 const HeroSection = () => {
   return (
