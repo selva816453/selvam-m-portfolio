@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Github, Linkedin, Instagram, Mail, Send } from "lucide-react";
+import { Send } from "lucide-react";
 import profilePhoto from "@/assets/selvam-profile.jpeg";
 
 const HeroSection = () => {
@@ -13,42 +13,13 @@ const HeroSection = () => {
       <div className="blur-orb w-[400px] h-[400px] bg-secondary/10 -bottom-32 -right-32" />
 
       <div className="container-custom relative z-10 px-5 sm:px-6 lg:px-16 py-12 lg:py-0">
-        <div className="flex flex-col items-center text-center gap-8 lg:grid lg:grid-cols-[auto_1fr_auto] lg:items-center lg:text-left lg:gap-16">
-          {/* Social Icons - horizontal on mobile, vertical on desktop */}
-          <motion.div
-            className="flex flex-row lg:flex-col gap-6 items-center order-3 lg:order-1"
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.4, duration: 0.6 }}
-          >
-            {[
-              { icon: Linkedin, href: "https://www.linkedin.com/in/selvam-m-350562324/", label: "LinkedIn" },
-              { icon: Github, href: "https://github.com/selva816453", label: "GitHub" },
-              { icon: Instagram, href: "https://www.instagram.com/_s_e_l_v_a_27/", label: "Instagram" },
-              { icon: Mail, href: "mailto:selva816453@gmail.com", label: "Email" },
-            ].map((s, i) => (
-              <motion.a
-                key={s.label}
-                href={s.href}
-                target={s.href.startsWith("http") ? "_blank" : undefined}
-                rel="noopener noreferrer"
-                aria-label={s.label}
-                className="text-primary/80 hover:text-primary hover:scale-125 transition-all duration-300"
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.5 + i * 0.1 }}
-              >
-                <s.icon className="w-6 h-6 sm:w-5 sm:h-5" />
-              </motion.a>
-            ))}
-          </motion.div>
-
+        <div className="flex flex-col items-center text-center gap-8 lg:grid lg:grid-cols-[1fr_auto] lg:items-center lg:text-left lg:gap-16">
           {/* Circular Portrait - shown above text on mobile, right side on desktop */}
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.3, duration: 0.8, type: "spring" }}
-            className="relative w-[240px] h-[240px] sm:w-[280px] sm:h-[280px] lg:w-[320px] lg:h-[320px] xl:w-[380px] xl:h-[380px] order-1 lg:order-3 lg:justify-self-end"
+            className="relative w-[240px] h-[240px] sm:w-[280px] sm:h-[280px] lg:w-[320px] lg:h-[320px] xl:w-[380px] xl:h-[380px] order-1 lg:order-2 lg:justify-self-end"
           >
             <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary to-secondary blur-2xl opacity-40" />
             <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-secondary shadow-2xl bg-background flex items-center justify-center">
@@ -65,7 +36,7 @@ const HeroSection = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="max-w-xl order-2 lg:order-2"
+            className="max-w-xl order-2 lg:order-1"
           >
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 text-foreground leading-tight">
               Hi, I'm <span className="gradient-text">Selvam M</span>
