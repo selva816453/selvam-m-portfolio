@@ -121,8 +121,9 @@ const ProjectsSection = () => {
                     <div className="relative aspect-[120/63] bg-background/60 overflow-hidden">
                       <div className="absolute -inset-6 bg-gradient-to-br from-primary/20 to-secondary/20 blur-3xl opacity-60" />
                       <img
-                        src={livePreview(p.repo)}
-                        alt={`${p.title} — live GitHub preview`}
+                        src={p.image}
+                        alt={`${p.title} preview`}
+
                         loading="lazy"
                         className="relative w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                       />
