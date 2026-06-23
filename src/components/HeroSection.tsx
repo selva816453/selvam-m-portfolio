@@ -50,7 +50,7 @@ const HeroSection = () => {
             </h1>
 
             <h3 className="text-lg sm:text-xl md:text-2xl font-medium text-muted-foreground mb-6">
-              Java &amp; Frontend Developer
+              Java Developer
             </h3>
 
             <p className="text-base sm:text-base md:text-lg text-muted-foreground mb-7 leading-relaxed">
