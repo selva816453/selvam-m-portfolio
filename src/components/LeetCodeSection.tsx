@@ -126,7 +126,7 @@ const LeetCodeSection = () => {
                 />
               </svg>
               <span className="text-xl sm:text-2xl md:text-3xl font-semibold text-gray-900 truncate">
-                selvaaaaa
+                Selvam-27
               </span>
             </div>
             <span className="text-gray-500 font-medium text-sm sm:text-base flex-shrink-0">
