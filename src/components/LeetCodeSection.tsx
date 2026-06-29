@@ -32,7 +32,7 @@ const LeetCodeSection = () => {
   const [data, setData] = useState<LeetData>(initial);
 
   useEffect(() => {
-    fetch("https://leetcode-api-faisalshohag.vercel.app/selvaaaaa")
+    fetch("https://leetcode-api-faisalshohag.vercel.app/Selvam-27")
       .then((r) => r.json())
       .then((d) =>
         setData({
@@ -126,7 +126,7 @@ const LeetCodeSection = () => {
                 />
               </svg>
               <span className="text-xl sm:text-2xl md:text-3xl font-semibold text-gray-900 truncate">
-                selvaaaaa
+                Selvam-27
               </span>
             </div>
             <span className="text-gray-500 font-medium text-sm sm:text-base flex-shrink-0">
@@ -209,7 +209,7 @@ const LeetCodeSection = () => {
             I've solved over {data.totalSolved ?? "400"}+ problems on LeetCode and consistently practice DSA to strengthen my skills.
           </p>
           <a
-            href="https://leetcode.com/u/selvaaaaa/"
+            href="https://leetcode.com/u/Selvam-27/"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 text-primary hover:underline font-semibold text-base sm:text-lg"
