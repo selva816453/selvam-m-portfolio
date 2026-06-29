@@ -32,7 +32,7 @@ const LeetCodeSection = () => {
   const [data, setData] = useState<LeetData>(initial);
 
   useEffect(() => {
-    fetch("https://leetcode-api-faisalshohag.vercel.app/selvaaaaa")
+    fetch("https://leetcode-api-faisalshohag.vercel.app/Selvam-27")
       .then((r) => r.json())
       .then((d) =>
         setData({
