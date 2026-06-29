@@ -209,7 +209,7 @@ const LeetCodeSection = () => {
             I've solved over {data.totalSolved ?? "400"}+ problems on LeetCode and consistently practice DSA to strengthen my skills.
           </p>
           <a
-            href="https://leetcode.com/u/selvaaaaa/"
+            href="https://leetcode.com/u/Selvam-27/"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 text-primary hover:underline font-semibold text-base sm:text-lg"
