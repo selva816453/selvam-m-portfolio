@@ -13,50 +13,99 @@ query userData($username: String!) {
   }
 }`;
 
+const TOTALS = { All: 4013, Easy: 958, Medium: 2095, Hard: 960 };
+
+async function fromGraphQL(username: string) {
+  const res = await fetch("https://leetcode.com/graphql", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Referer: `https://leetcode.com/u/${username}/`,
+      Origin: "https://leetcode.com",
+      "User-Agent":
+        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36",
+    },
+    body: JSON.stringify({ query: QUERY, variables: { username } }),
+  });
+  const text = await res.text();
+  if (!text.trim().startsWith("{")) throw new Error("blocked");
+  const json = JSON.parse(text);
+  const m = json?.data?.matchedUser;
+  if (!m) throw new Error("user not found");
+
+  const ac: Record<string, number> = {};
+  for (const s of m.submitStatsGlobal.acSubmissionNum) ac[s.difficulty] = s.count;
+  const all: Record<string, number> = { ...TOTALS };
+  for (const s of json.data.allQuestionsCount ?? []) all[s.difficulty] = s.count;
+
+  return {
+    totalSolved: ac.All ?? 0,
+    easySolved: ac.Easy ?? 0,
+    mediumSolved: ac.Medium ?? 0,
+    hardSolved: ac.Hard ?? 0,
+    totalQuestions: all.All,
+    totalEasy: all.Easy,
+    totalMedium: all.Medium,
+    totalHard: all.Hard,
+    ranking: m.profile?.ranking ?? null,
+    source: "leetcode",
+  };
+}
+
+async function fromAlfa(username: string) {
+  const [solvedRes, profileRes] = await Promise.all([
+    fetch(`https://alfa-leetcode-api.onrender.com/${username}/solved`),
+    fetch(`https://alfa-leetcode-api.onrender.com/userProfile/${username}`).catch(() => null),
+  ]);
+  const solved = await solvedRes.json();
+  let ranking: number | null = null;
+  try {
+    const p = profileRes ? await profileRes.json() : null;
+    ranking = p?.ranking ?? null;
+  } catch (_) { /* ignore */ }
+
+  return {
+    totalSolved: solved.solvedProblem ?? 0,
+    easySolved: solved.easySolved ?? 0,
+    mediumSolved: solved.mediumSolved ?? 0,
+    hardSolved: solved.hardSolved ?? 0,
+    totalQuestions: TOTALS.All,
+    totalEasy: TOTALS.Easy,
+    totalMedium: TOTALS.Medium,
+    totalHard: TOTALS.Hard,
+    ranking,
+    source: "alfa",
+  };
+}
+
 Deno.serve(async (req) => {
   if (req.method === "OPTIONS") return new Response(null, { headers: corsHeaders });
 
-  try {
-    const url = new URL(req.url);
-    const username = url.searchParams.get("username") ?? "Selvam-27";
-
-    const res = await fetch("https://leetcode.com/graphql", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Referer: "https://leetcode.com",
-        "User-Agent": "Mozilla/5.0",
-      },
-      body: JSON.stringify({ query: QUERY, variables: { username } }),
-    });
-
-    const json = await res.json();
-    const m = json?.data?.matchedUser;
-    if (!m) throw new Error("User not found");
-
-    const ac: Record<string, number> = {};
-    for (const s of m.submitStatsGlobal.acSubmissionNum) ac[s.difficulty] = s.count;
-    const all: Record<string, number> = {};
-    for (const s of json.data.allQuestionsCount) all[s.difficulty] = s.count;
-
-    return new Response(
-      JSON.stringify({
-        totalSolved: ac.All ?? 0,
-        easySolved: ac.Easy ?? 0,
-        mediumSolved: ac.Medium ?? 0,
-        hardSolved: ac.Hard ?? 0,
-        totalQuestions: all.All ?? 0,
-        totalEasy: all.Easy ?? 0,
-        totalMedium: all.Medium ?? 0,
-        totalHard: all.Hard ?? 0,
-        ranking: m.profile?.ranking ?? null,
-      }),
-      { headers: { ...corsHeaders, "Content-Type": "application/json" } }
-    );
-  } catch (e) {
-    return new Response(JSON.stringify({ error: String(e) }), {
-      status: 500,
-      headers: { ...corsHeaders, "Content-Type": "application/json" },
-    });
+  const url = new URL(req.url);
+  let username = url.searchParams.get("username") ?? "";
+  if (!username && req.method === "POST") {
+    try {
+      const body = await req.json();
+      username = body?.username ?? "";
+    } catch (_) { /* ignore */ }
   }
+  if (!username) username = "Selvam-27";
+
+  const attempts: string[] = [];
+  for (const fn of [fromGraphQL, fromAlfa]) {
+    try {
+      const data = await fn(username);
+      return new Response(JSON.stringify(data), {
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    } catch (e) {
+      attempts.push(String(e));
+    }
+  }
+
+  console.error("leetcode-stats failed", attempts);
+  return new Response(JSON.stringify({ error: "Unable to fetch LeetCode stats", attempts }), {
+    status: 502,
+    headers: { ...corsHeaders, "Content-Type": "application/json" },
+  });
 });
