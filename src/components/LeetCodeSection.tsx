@@ -1,6 +1,8 @@
 import { motion, useInView } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { ExternalLink } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
+
 
 type LeetData = {
   totalSolved: number | null;
