@@ -1,6 +1,8 @@
 import { motion, useInView } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { ExternalLink } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
+
 
 type LeetData = {
   totalSolved: number | null;
@@ -32,9 +34,10 @@ const LeetCodeSection = () => {
   const [data, setData] = useState<LeetData>(initial);
 
   useEffect(() => {
-    fetch("https://leetcode-api-faisalshohag.vercel.app/Selvam-27")
-      .then((r) => r.json())
-      .then((d) =>
+    supabase.functions
+      .invoke("leetcode-stats", { body: {} })
+      .then(({ data: d }) => {
+        if (!d || d.error) return;
         setData({
           totalSolved: d.totalSolved ?? null,
           easySolved: d.easySolved ?? null,
@@ -45,10 +48,11 @@ const LeetCodeSection = () => {
           totalHard: d.totalHard ?? null,
           totalQuestions: d.totalQuestions ?? null,
           ranking: d.ranking ?? null,
-        })
-      )
+        });
+      })
       .catch(() => {});
   }, []);
+
 
   // Circular progress
   const total = data.totalSolved ?? 0;
