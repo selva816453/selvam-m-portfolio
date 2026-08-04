@@ -13,6 +13,9 @@ query userData($username: String!) {
   }
 }`;
 
+const CACHE_MS = 5 * 60 * 1000;
+const cache = new Map<string, { at: number; data: unknown }>();
+
 const TOTALS = { All: 4013, Easy: 958, Medium: 2095, Hard: 960 };
 
 async function fromGraphQL(username: string) {
@@ -26,6 +29,7 @@ async function fromGraphQL(username: string) {
         "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36",
     },
     body: JSON.stringify({ query: QUERY, variables: { username } }),
+    signal: AbortSignal.timeout(6000),
   });
   const text = await res.text();
   if (!text.trim().startsWith("{")) throw new Error("blocked");
@@ -54,7 +58,7 @@ async function fromGraphQL(username: string) {
 
 async function fromAlfa(username: string) {
   const [solvedRes, profileRes] = await Promise.all([
-    fetch(`https://alfa-leetcode-api.onrender.com/${username}/solved`),
+    fetch(`https://alfa-leetcode-api.onrender.com/${username}/solved`, { signal: AbortSignal.timeout(9000) }),
     fetch(`https://alfa-leetcode-api.onrender.com/userProfile/${username}`).catch(() => null),
   ]);
   const solved = await solvedRes.json();
@@ -91,12 +95,20 @@ Deno.serve(async (req) => {
   }
   if (!username) username = "Selvam-27";
 
+  const cached = cache.get(username);
+  if (cached && Date.now() - cached.at < CACHE_MS) {
+    return new Response(JSON.stringify(cached.data), {
+      headers: { ...corsHeaders, "Content-Type": "application/json", "Cache-Control": "public, max-age=300" },
+    });
+  }
+
   const attempts: string[] = [];
   for (const fn of [fromGraphQL, fromAlfa]) {
     try {
       const data = await fn(username);
+      cache.set(username, { at: Date.now(), data });
       return new Response(JSON.stringify(data), {
-        headers: { ...corsHeaders, "Content-Type": "application/json" },
+        headers: { ...corsHeaders, "Content-Type": "application/json", "Cache-Control": "public, max-age=300" },
       });
     } catch (e) {
       attempts.push(String(e));
@@ -104,6 +116,11 @@ Deno.serve(async (req) => {
   }
 
   console.error("leetcode-stats failed", attempts);
+  if (cached) {
+    return new Response(JSON.stringify(cached.data), {
+      headers: { ...corsHeaders, "Content-Type": "application/json" },
+    });
+  }
   return new Response(JSON.stringify({ error: "Unable to fetch LeetCode stats", attempts }), {
     status: 502,
     headers: { ...corsHeaders, "Content-Type": "application/json" },

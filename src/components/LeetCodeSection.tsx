@@ -31,14 +31,20 @@ const initial: LeetData = {
 const LeetCodeSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
-  const [data, setData] = useState<LeetData>(initial);
+  const [data, setData] = useState<LeetData>(() => {
+    try {
+      const cached = localStorage.getItem("leetcode-stats");
+      if (cached) return { ...initial, ...JSON.parse(cached) };
+    } catch (_) { /* ignore */ }
+    return initial;
+  });
 
   useEffect(() => {
     supabase.functions
       .invoke("leetcode-stats", { body: {} })
       .then(({ data: d }) => {
         if (!d || d.error) return;
-        setData({
+        const next = {
           totalSolved: d.totalSolved ?? null,
           easySolved: d.easySolved ?? null,
           mediumSolved: d.mediumSolved ?? null,
@@ -48,7 +54,11 @@ const LeetCodeSection = () => {
           totalHard: d.totalHard ?? null,
           totalQuestions: d.totalQuestions ?? null,
           ranking: d.ranking ?? null,
-        });
+        };
+        setData(next);
+        try {
+          localStorage.setItem("leetcode-stats", JSON.stringify(next));
+        } catch (_) { /* ignore */ }
       })
       .catch(() => {});
   }, []);
