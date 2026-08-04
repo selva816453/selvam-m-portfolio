@@ -54,7 +54,11 @@ const LeetCodeSection = () => {
           totalHard: d.totalHard ?? null,
           totalQuestions: d.totalQuestions ?? null,
           ranking: d.ranking ?? null,
-        });
+        };
+        setData(next);
+        try {
+          localStorage.setItem("leetcode-stats", JSON.stringify(next));
+        } catch (_) { /* ignore */ }
       })
       .catch(() => {});
   }, []);
