@@ -21,7 +21,7 @@ const projects: Project[] = [
     description:
       "A web platform that helps students and staff report, track, and recover lost items across the campus with real-time updates and an effortless claim workflow.",
     tags: ["React", "TypeScript", "Tailwind", "Supabase"],
-    github: "https://github.com/selva816453/Lost-and-Found-Monitoring-System",
+    github: "https://github.com/selva816453/Lost-and-Found-Tracking-System",
     image: lostFoundImg,
     year: "2025",
     role: "Full-stack",
