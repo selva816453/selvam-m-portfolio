@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" fill="none">
+  <defs>
+    <linearGradient id="base" x1="80" y1="30" x2="1120" y2="630" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#101B2A"/>
+      <stop offset="1" stop-color="#07111D"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="120" y1="60" x2="720" y2="550" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#37D6C0"/>
+      <stop offset="1" stop-color="#148EC8"/>
+    </linearGradient>
+    <linearGradient id="vehicle" x1="156" y1="322" x2="500" y2="495" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#52E4D0"/>
+      <stop offset="1" stop-color="#1678B9"/>
+    </linearGradient>
+    <pattern id="mapgrid" width="42" height="42" patternUnits="userSpaceOnUse">
+      <path d="M42 0H0V42" stroke="#9BB8C3" stroke-opacity=".11" stroke-width="1"/>
+    </pattern>
+    <filter id="soft" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="28"/>
+    </filter>
+  </defs>
+  <rect width="1200" height="630" rx="24" fill="url(#base)"/>
+  <circle cx="926" cy="202" r="177" fill="#10B9AA" fill-opacity=".13" filter="url(#soft)"/>
+  <rect x="34" y="34" width="1132" height="562" rx="18" stroke="#8DA8B5" stroke-opacity=".16"/>
+  <path d="M34 104H1166" stroke="#8DA8B5" stroke-opacity=".17"/>
+  <circle cx="68" cy="69" r="7" fill="#F27878"/>
+  <circle cx="92" cy="69" r="7" fill="#E9BF66"/>
+  <circle cx="116" cy="69" r="7" fill="#52D6A4"/>
+  <rect x="422" y="54" width="356" height="30" rx="15" fill="#09141E" stroke="#A3BBC2" stroke-opacity=".15"/>
+  <text x="600" y="74" fill="#A6BAC4" font-family="Arial, sans-serif" font-size="13" text-anchor="middle">transportease.app / book</text>
+  <path d="M69 141H93L103 159H59L69 141Z" fill="url(#accent)"/>
+  <path d="M64 157H98" stroke="#D9FFF8" stroke-width="3" stroke-linecap="round"/>
+  <text x="115" y="160" fill="#F2F8FA" font-family="Arial, sans-serif" font-size="25" font-weight="700">TransportEase</text>
+  <text x="992" y="157" fill="#9DAFB9" font-family="Arial, sans-serif" font-size="13">Explore   Trips   Sign in</text>
+  <text x="74" y="232" fill="#4BE0CA" font-family="Arial, sans-serif" font-size="13" font-weight="700" letter-spacing="2">SMARTER TRAVEL STARTS HERE</text>
+  <text x="74" y="278" fill="#F4F8FA" font-family="Arial, sans-serif" font-size="36" font-weight="700">Find your ride.</text>
+  <text x="74" y="314" fill="#F4F8FA" font-family="Arial, sans-serif" font-size="36" font-weight="700">Go your way.</text>
+  <text x="74" y="350" fill="#A7B8C1" font-family="Arial, sans-serif" font-size="15">Book the right vehicle for every journey.</text>
+  <rect x="72" y="376" width="459" height="156" rx="12" fill="#152533" stroke="#B8D2D7" stroke-opacity=".16"/>
+  <text x="96" y="408" fill="#A6BAC4" font-family="Arial, sans-serif" font-size="12" font-weight="700" letter-spacing="1">CHOOSE YOUR RIDE</text>
+  <rect x="92" y="425" width="198" height="84" rx="9" fill="#1C3442" stroke="#38D5C2" stroke-opacity=".65"/>
+  <path d="M117 468L128 449Q132 442 142 442H204Q213 442 218 451L228 468V483H117V468Z" fill="url(#vehicle)"/>
+  <path d="M138 449H205L214 465H129L138 449Z" fill="#C8F3EC" fill-opacity=".88"/>
+  <circle cx="140" cy="484" r="10" fill="#07131E" stroke="#AFD0D5" stroke-width="3"/>
+  <circle cx="204" cy="484" r="10" fill="#07131E" stroke="#AFD0D5" stroke-width="3"/>
+  <text x="244" y="457" fill="#EDF6F7" font-family="Arial, sans-serif" font-size="13" font-weight="700">COMFORT</text>
+  <text x="244" y="480" fill="#A3B7C0" font-family="Arial, sans-serif" font-size="12">Everyday ride</text>
+  <rect x="307" y="425" width="201" height="84" rx="9" fill="#10212E" stroke="#A9C0C8" stroke-opacity=".15"/>
+  <path d="M327 468L340 447Q344 440 354 440H415Q423 440 429 450L439 468V483H327V468Z" fill="#889CA8"/>
+  <path d="M350 448H416L426 465H340L350 448Z" fill="#D5E0E1" fill-opacity=".8"/>
+  <circle cx="351" cy="484" r="10" fill="#07131E" stroke="#A9BCC3" stroke-width="3"/>
+  <circle cx="415" cy="484" r="10" fill="#07131E" stroke="#A9BCC3" stroke-width="3"/>
+  <text x="451" y="457" fill="#EDF6F7" font-family="Arial, sans-serif" font-size="12" font-weight="700">SUV</text>
+  <text x="451" y="480" fill="#A3B7C0" font-family="Arial, sans-serif" font-size="11">Extra space</text>
+  <rect x="566" y="190" width="559" height="342" rx="14" fill="#122330" stroke="#A8C1CA" stroke-opacity=".17"/>
+  <rect x="581" y="205" width="529" height="312" rx="8" fill="#172D38"/>
+  <rect x="581" y="205" width="529" height="312" rx="8" fill="url(#mapgrid)"/>
+  <path d="M595 279L697 255L744 287L830 262L890 282L981 235L1093 254M597 434L680 401L744 422L811 371L878 394L964 342L1096 364M642 214L669 299L653 361L702 508M919 210L896 306L933 365L904 506M1055 212L1024 293L1067 414L1038 509" stroke="#A6BCC2" stroke-opacity=".24" stroke-width="8" stroke-linecap="round"/>
+  <path d="M611 454C675 421 702 450 752 405C801 361 820 316 880 333C942 350 973 322 1006 277C1025 251 1050 256 1080 270" stroke="url(#accent)" stroke-width="7" stroke-linecap="round" stroke-dasharray="1 1"/>
+  <circle cx="611" cy="454" r="12" fill="#39D6C2" stroke="#D8FFF9" stroke-width="5"/>
+  <circle cx="1080" cy="270" r="12" fill="#F28D72" stroke="#FFF1E9" stroke-width="5"/>
+  <rect x="727" y="231" width="157" height="43" rx="8" fill="#0A1821" stroke="#90A9B2" stroke-opacity=".24"/>
+  <text x="745" y="249" fill="#A2B7C0" font-family="Arial, sans-serif" font-size="10">ESTIMATED FARE</text>
+  <text x="745" y="266" fill="#F2F7F8" font-family="Arial, sans-serif" font-size="14" font-weight="700">From $24.00</text>
+  <rect x="827" y="550" width="292" height="27" rx="13.5" fill="#17362F"/>
+  <circle cx="847" cy="563.5" r="5" fill="#43D8B8"/>
+  <text x="861" y="568" fill="#C6EEE6" font-family="Arial, sans-serif" font-size="11">AI-assisted ride recommendations</text>
+</svg>

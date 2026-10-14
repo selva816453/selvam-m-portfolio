@@ -4,6 +4,7 @@ import { Github, ArrowUpRight } from "lucide-react";
 import lostFoundImg from "@/assets/project-lostfound.jpg";
 import groceryImg from "@/assets/project-grocery.jpg";
 import surveillanceImg from "@/assets/project-surveillance.jpg";
+import transportEaseImg from "@/assets/project-transportease.svg";
 
 type Project = {
   title: string;
@@ -25,6 +26,16 @@ const projects: Project[] = [
     image: lostFoundImg,
     year: "2025",
     role: "Full-stack",
+  },
+  {
+    title: "TransportEase– AI-Powered Vehicle Booking System",
+    description:
+      "An AI-powered vehicle booking system designed to make finding and reserving transportation more efficient.",
+    tags: ["AI", "Vehicle Booking", "Transportation"],
+    github: "https://github.com/selva816453/TransportEase---A-Vehicle-Booking-System",
+    image: transportEaseImg,
+    year: "2025",
+    role: "AI / Booking",
   },
   {
     title: "E-Commerce Grocery Website",

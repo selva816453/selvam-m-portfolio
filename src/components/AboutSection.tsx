@@ -5,7 +5,7 @@ import profilePhoto from "@/assets/selvam-profile.jpeg";
 
 const stats = [
   { value: "7.94", label: "Aggregate\nCGPA" },
-  { value: "03+", label: "Projects" },
+  { value: "04+", label: "Projects" },
   { value: "400+", label: "Problems Solved in\nLeetCode" },
 ];
 
