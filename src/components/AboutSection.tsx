@@ -57,7 +57,7 @@ const AboutSection = () => {
             className="space-y-7 max-w-xl mx-auto lg:mx-0"
           >
             <p className="text-sm sm:text-base md:text-lg text-muted-foreground leading-relaxed">
-              Java Developer with strong expertise in Spring Boot and modern frontend technologies. I have a solid foundation in clean architecture and writing maintainable, scalable code. Passionate about building responsive and efficient web applications, I am seeking a Software Engineer role where I can contribute effectively and continue to grow as a developer.
+              Aspiring Software Developer with a strong foundation in Java, Object-Oriented Programming, SQL, and Data Structures and Algorithms. Interested in developing efficient, maintainable, and user-friendly applications while continuously improving my problem-solving and technical skills. Eager to apply my knowledge to real-world projects, contribute to collaborative teams, and grow as a Software Engineer.
             </p>
 
             {/* Stats row */}
